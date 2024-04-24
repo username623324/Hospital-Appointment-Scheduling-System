@@ -21,7 +21,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         {   
             Doctor emptydoctor = new Doctor();
             Patient emptypatient = new Patient();
-            bool status = false;
+            Status status = new Status();
 
             var faker = new Faker();
 

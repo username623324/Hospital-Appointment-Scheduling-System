@@ -8,5 +8,6 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class MainViewModel
     {
+
     }
 }

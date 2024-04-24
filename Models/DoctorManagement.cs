@@ -23,11 +23,11 @@ namespace Hospital_Appointment_Scheduling_System.Models
         {
             List<Appointment> list = new List<Appointment>();
             var faker = new Faker();
-            faker.Random = new Randomizer(123);
+            faker.Random = new Randomizer(100);
             for (int i = 0; i < 10; i++)
             {
                 string name = faker.Name.FullName();
-                string specialization = faker.Random.Words();
+                string specialization = faker.Random.Word();
                 var fakes = new Doctor(i+1, name, specialization, list);
                 DoctorDataBase.Add(fakes);
             }

@@ -13,7 +13,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public string? Specialization { get; set; }
         public List<Appointment>? Appointments { get; set; }
 
-        public Doctor(int id, string name, string specialization, List<Appointment> appointments)
+        public Doctor(int? id, string? name, string? specialization, List<Appointment>? appointments)
         {
             Id = id;
             Name = name;
@@ -21,6 +21,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
             Appointments = appointments;
         }
 
-        public Doctor() { }
+        public Doctor() 
+        { 
+
+        }
     }
 }
