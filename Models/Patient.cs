@@ -11,18 +11,12 @@ namespace Hospital_Appointment_Scheduling_System.Models
     public class Patient: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        private string? _patientId;
+        public int? Id { get; set; }
         private string? _patientName;
         private string? _patientContactNumber;
         private List<string>? _patientMedicalHistory;
 
-        public string? PatientId 
-        { 
-            get { return _patientId; }
-            set { _patientId = value; 
-                OnPropertyChanged("PatientId"); } 
-        }
-
+      
         public string? PatientName
         {
             get { return _patientName; }
@@ -47,13 +41,15 @@ namespace Hospital_Appointment_Scheduling_System.Models
             }
         }
 
-        public Patient(string? patientId, string? patientName, string? patientContactNumber, List<string>? patientMedicalHistory)
+        public Patient(int? id, string? patientName, string? patientContactNumber, List<string>? patientMedicalHistory)
         {
-            PatientId = patientId;
+            Id = id;
             PatientName = patientName;
             PatientContactNumber = patientContactNumber;
             PatientMedicalHistory = patientMedicalHistory;
         }
+
+        public Patient() { }
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

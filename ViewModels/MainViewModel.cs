@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    internal class MainViewModel
+    public class MainViewModel
     {
     }
 }

@@ -13,8 +13,4 @@
     <PackageReference Include="Bogus" Version="35.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
-
 </Project>

@@ -8,14 +8,14 @@ namespace Hospital_Appointment_Scheduling_System.Models
 {
     public class Appointment
     {
-        public string? Id { get; set; }
+        public int? Id { get; set; }
         public Patient? Patient { get; set; }
         public Doctor? DoctorAssigned { get; set; }
         public DateOnly? Date {  get; set; }
         public TimeOnly?Time { get; set; }
         public bool? Status { get; set; }
 
-        public Appointment(string id, Patient patient, Doctor doctorAssigned, DateOnly date, TimeOnly time, bool status)
+        public Appointment(int id, Patient patient, Doctor doctorAssigned, DateOnly date, TimeOnly time, bool status)
         {
             Id = id;
             Patient = patient;
@@ -25,5 +25,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
             Status = status;
         }
 
+        public Appointment()
+        {
+
+        }
     }
 }
