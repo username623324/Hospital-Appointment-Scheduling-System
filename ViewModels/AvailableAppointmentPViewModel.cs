@@ -11,7 +11,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class AvailableAppointmentPViewModel: NotifyPropertyChanged
     {
-       
+        public Patient Patient { get; set; }
         public Doctor Doctor { get; set; }
         public ICommand AddAppointmentCommand { get; set; }
 
@@ -39,7 +39,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         private void AddAppointment(object obj)
         {
-            
+            SelectedAppointment.Patient = this.Patient;
         }
     }
 }

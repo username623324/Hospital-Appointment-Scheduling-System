@@ -15,7 +15,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Patient> PatientDataBase { get; set; } = new ObservableCollection<Patient>()
         {
 
-
+            new Patient(100,"joe","123", null)
 
         };
 

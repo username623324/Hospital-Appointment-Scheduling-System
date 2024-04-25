@@ -32,7 +32,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 
                 DateOnly date = faker.Date.BetweenDateOnly(new DateOnly(2024, 1,1), new DateOnly(2025,12,31));
                 TimeOnly time = faker.Date.BetweenTimeOnly(new TimeOnly(8,0), new TimeOnly(16,0));
-                Appointment appointment = new Appointment(i+1, emptypatient, emptydoctor, date, time, status);
+                Appointment appointment = new Appointment(i+1, date, time, status, emptypatient, emptydoctor);
                 AppointmentDataBase.Add(appointment);
             }
             return AppointmentDataBase; 

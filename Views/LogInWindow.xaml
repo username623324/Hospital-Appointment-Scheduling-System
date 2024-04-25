@@ -1,0 +1,58 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.LogInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Title="LogInWindow" Height="450" Width="400">
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    Margin="50">
+            <TextBlock Text="Login" 
+                       FontSize="25"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       Padding="10"
+                       />
+            <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="User Name" 
+                   Grid.Row="0"
+                   Margin="0,15"
+                   HorizontalAlignment="Left"/>
+                <TextBox  Grid.Column="1"
+                  Text="{Binding UserName}"
+                  Grid.Row="1"
+                  Padding="0,5"
+                  Width="255"
+                  HorizontalAlignment="Left"
+                  />
+                <TextBlock Text="ID" 
+                   Grid.Row="2"
+                   Margin="0,15"
+                   HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="3"
+                      Text="{Binding Id}"
+                      Padding="0,5"                           
+                      Width="255"
+                      HorizontalAlignment="Left"/>
+            </Grid>
+            <Button 
+                    Content="Login" 
+                    Command="{Binding LogInCommand}"
+                    Foreground="White"
+                    Background="Black"
+                    Margin="0,25"
+                    Height="35"
+                    Width="250"/>
+        </StackPanel>
+    </Grid>
+</Window>

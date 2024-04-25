@@ -14,7 +14,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class PatientHomePageViewModel: NotifyPropertyChanged
     {   
-        
+        public Patient LoggedInPatient { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
         private List<string> _searchOptions = new List<string>() { "Name", "Specialization"};
         private string _selectedOption = "Name";
@@ -53,10 +53,12 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         }
 
 
-        public PatientHomePageViewModel()
+        public PatientHomePageViewModel(Patient loggedInPatient)
         {
             Doctors = DoctorManagement.GetDoctors();
             ViewAppointmentCommand = new RelayCommand(ViewAppointment, (s) => true);
+            LoggedInPatient = loggedInPatient;
+
         }
 
         private void ViewAppointment(object obj)

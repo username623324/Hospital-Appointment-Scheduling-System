@@ -23,10 +23,10 @@ namespace Hospital_Appointment_Scheduling_System.Views
     /// </summary>
     public partial class PatientHomePage : Window
     {
-        public PatientHomePage()
+        public PatientHomePage(Patient patient)
         {
             InitializeComponent();
-            PatientHomePageViewModel PatientHomePageVM = new PatientHomePageViewModel();
+            PatientHomePageViewModel PatientHomePageVM = new PatientHomePageViewModel(patient);
             this.DataContext = PatientHomePageVM;
             
         }

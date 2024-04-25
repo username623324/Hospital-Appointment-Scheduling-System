@@ -20,12 +20,34 @@ namespace Hospital_Appointment_Scheduling_System.Models
     public class Appointment: NotifyPropertyChanged
     {
         public int? Id { get; set; }
-        public Patient? Patient { get; set; }
-        public Doctor? DoctorAssigned { get; set; }
+        private Patient? _patient;
+        private Doctor? _doctorAssigned;
         public DateOnly? Date {  get; set; }
         public TimeOnly? Time { get; set; }
         public Status? Status { get; set; }
         private AvailableOrNot _condition;
+
+
+        public Patient? Patient
+        {
+            get { return _patient; }
+            set
+            {
+                _patient = value;
+                Condition = AvailableOrNot.Taken;
+                OnPropertyChanged("Patient");
+            }
+        }
+
+        public Doctor? DoctorAssigned
+        {
+            get { return _doctorAssigned; }
+            set
+            {
+                _doctorAssigned = value;
+                OnPropertyChanged("DoctorAssigned");
+            }
+        }
 
         public AvailableOrNot Condition
         {
@@ -33,14 +55,14 @@ namespace Hospital_Appointment_Scheduling_System.Models
             set { _condition = value; OnPropertyChanged(nameof(Condition)); }
         }
 
-        public Appointment(int? id, Patient? patient, Doctor? doctorAssigned, DateOnly? date, TimeOnly? time, Status? status)
+        public Appointment(int? id, DateOnly? date, TimeOnly? time, Status? status, Patient patient, Doctor doctorAssigned)
         {
             Id = id;
-            Patient = patient;
-            DoctorAssigned = doctorAssigned;
             Date = date;
             Time = time;
             Status = status;
+            Patient = patient;
+            DoctorAssigned = doctorAssigned;
             Condition = AvailableOrNot.Available;
         }
 
