@@ -1,11 +1,13 @@
 ﻿using Hospital_Appointment_Scheduling_System.Commands;
 using Hospital_Appointment_Scheduling_System.Models;
+using Hospital_Appointment_Scheduling_System.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
@@ -59,7 +61,12 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         private void ViewAppointment(object obj)
         {
-            
+            var availableAppointmentPVM = new AvailableAppointmentPViewModel(SelectedDoctor);
+            var availableAppointmentPWindow = new AvailableAppointmentPWindow();
+
+            availableAppointmentPWindow.DataContext = availableAppointmentPVM;
+            availableAppointmentPWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            availableAppointmentPWindow.Show();
         }
     }
 }

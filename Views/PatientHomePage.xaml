@@ -105,7 +105,7 @@
                         Width="120"
                         HorizontalAlignment="Right"
                         Content="View Appointment"
-                        Command="{Binding }"
+                        Command="{Binding ViewAppointmentCommand}"
                         Margin="50,7,0,0"/>
 
 

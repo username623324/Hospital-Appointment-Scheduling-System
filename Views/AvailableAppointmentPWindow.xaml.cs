@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Hospital_Appointment_Scheduling_System.Views
 {
     /// <summary>
-    /// Interaction logic for Main.xaml
+    /// Interaction logic for AvailableAppointmentPWindow.xaml
     /// </summary>
-    public partial class Main : Window
+    public partial class AvailableAppointmentPWindow : Window
     {
-        public Main()
+        public AvailableAppointmentPWindow()
         {
             InitializeComponent();
         }

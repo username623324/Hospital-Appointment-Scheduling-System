@@ -29,11 +29,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
             for(int i = 0; i < 100;  i++)
             {
-                var startDate = DateOnly.FromDateTime(new DateTime(1/1/2024));
-                var endDAte = DateOnly.FromDateTime(new DateTime(12 / 31 / 2030));
-                DateOnly date = faker.Date.BetweenDateOnly(startDate, endDAte);
+                
+                DateOnly date = faker.Date.BetweenDateOnly(new DateOnly(2024, 1,1), new DateOnly(2025,12,31));
                 TimeOnly time = faker.Date.BetweenTimeOnly(new TimeOnly(8,0), new TimeOnly(16,0));
-
                 Appointment appointment = new Appointment(i+1, emptypatient, emptydoctor, date, time, status);
                 AppointmentDataBase.Add(appointment);
             }
