@@ -16,7 +16,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "150"/>
                 <ColumnDefinition Width="500"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -63,8 +63,10 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <Button Content="Appointments"
+                <Button Content="My Appointments"
+                        Command="{Binding ViewMyAppointmentCommand}"
                         Height="55"/>
+                
 
             </StackPanel>
             <StackPanel Grid.Row="1"

@@ -1,5 +1,4 @@
-﻿using Hospital_Appointment_Scheduling_System.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hospital_Appointment_Scheduling_System.ViewModels;
 
 namespace Hospital_Appointment_Scheduling_System.Views
 {
     /// <summary>
-    /// Interaction logic for LogInWindow.xaml
+    /// Interaction logic for RegisterWindow.xaml
     /// </summary>
-    public partial class LogInWindow : Window
+    public partial class RegisterWindow : Window
     {
-        public LogInWindow()
+        public RegisterWindow()
         {
             InitializeComponent();
-            LogInViewModel logInVM = new LogInViewModel();
-            this.DataContext = logInVM;
+            RegisterViewModel registerVM = new RegisterViewModel();
+            this.DataContext = registerVM;
         }
-
-       
     }
 }

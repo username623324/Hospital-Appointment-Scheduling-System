@@ -4,11 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        Name ="loginwindow"
         mc:Ignorable="d"
-        Title="LogInWindow" Height="450" Width="400">
+        Title="LogInWindow" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
         <StackPanel Orientation="Vertical"
-                    Margin="50">
+                    Grid.Row="1"
+                    Grid.Column="1">
             <TextBlock Text="Login" 
                        FontSize="25"
                        HorizontalAlignment="Center"
@@ -45,14 +62,35 @@
                       Width="255"
                       HorizontalAlignment="Left"/>
             </Grid>
-            <Button 
-                    Content="Login" 
+            <Button Content="Login" 
+                    CommandParameter="{x:Reference Name=loginwindow}"
                     Command="{Binding LogInCommand}"
                     Foreground="White"
                     Background="Black"
                     Margin="0,25"
                     Height="35"
                     Width="250"/>
+            <StackPanel HorizontalAlignment="Center" 
+                        Orientation="Horizontal" 
+                        Height="24"
+                        Margin="0,0,0,50">
+                <TextBlock Text="New User?"
+                           Width="58"
+                           Height="17"
+                           VerticalAlignment="Center"/>
+                <Button Content=" Register Here"
+                        Foreground="Blue"
+                        FontWeight="DemiBold"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        CommandParameter="{x:Reference Name=loginwindow}"
+                        Command="{Binding RegisterCommand}"
+                        Width="82"
+                        Height="20"/>
+            </StackPanel>
+
         </StackPanel>
+
+        
     </Grid>
 </Window>

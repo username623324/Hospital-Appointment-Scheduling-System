@@ -20,7 +20,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             set { _appointments = value; OnPropertyChanged("Appointments"); }
         }
 
-        public Doctor(int? id, string? name, string? specialization, List<Appointment> appointments)
+        public Doctor(int? id, string? name, string? specialization, List<Appointment>? appointments)
         {
             Id = id;
             Name = name;

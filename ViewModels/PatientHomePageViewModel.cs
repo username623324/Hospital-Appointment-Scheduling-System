@@ -13,14 +13,16 @@ using System.Windows.Input;
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class PatientHomePageViewModel: NotifyPropertyChanged
-    {   
+    {  
         public Patient LoggedInPatient { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
         private List<string> _searchOptions = new List<string>() { "Name", "Specialization"};
         private string _selectedOption = "Name";
         private Doctor _selectedDoctor;
         private int _selectedDoctorIndex;
+        public ICommand ViewMyAppointmentCommand { get; set; }
         public ICommand ViewAppointmentCommand { get; set; }
+
 
         public List<string> SearchOptions
         {
@@ -57,16 +59,21 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         {
             Doctors = DoctorManagement.GetDoctors();
             ViewAppointmentCommand = new RelayCommand(ViewAppointment, (s) => true);
+            ViewMyAppointmentCommand = new RelayCommand(ViewMyAppointment, (s)=> true);
             LoggedInPatient = loggedInPatient;
-
         }
 
-        private void ViewAppointment(object obj)
+        private void ViewMyAppointment(object obj)
         {
-            var availableAppointmentPVM = new AvailableAppointmentPViewModel(SelectedDoctor);
-            var availableAppointmentPWindow = new AvailableAppointmentPWindow();
+            PatientViewTheirAppointmentWindow pvtaw = new PatientViewTheirAppointmentWindow(LoggedInPatient);
+            pvtaw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            pvtaw.Show();
+        }
+       
 
-            availableAppointmentPWindow.DataContext = availableAppointmentPVM;
+        private void ViewAppointment(object obj)
+        {   
+            var availableAppointmentPWindow = new AvailableAppointmentPWindow(LoggedInPatient, SelectedDoctor);
             availableAppointmentPWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             availableAppointmentPWindow.Show();
         }

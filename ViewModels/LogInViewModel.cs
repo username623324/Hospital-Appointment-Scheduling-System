@@ -9,6 +9,7 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
@@ -18,14 +19,28 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         public Doctor Doctor { get; set; }
         public Patient Patient { get; set; }
         public string UserName { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public ICommand LogInCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
         public LogInViewModel()
         {
 
             LogInCommand = new RelayCommand(LogIn, (s)=>true);
+            RegisterCommand = new RelayCommand(Register, (s)=>true);
 
+        }
+
+        private void Register(object obj)
+        {
+            
+
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            registerWindow.Show();
+
+            var logInWindow = obj as Window;
+            logInWindow.Close();
         }
 
         private void LogIn(object obj)
@@ -35,7 +50,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             bool IsAPatient = false;
             for(int i = 0; i<DoctorManagement.DoctorDataBase.Count; i++)
             {
-                if(UserName == DoctorManagement.DoctorDataBase[i].Name && Id == DoctorManagement.DoctorDataBase[i].Id) 
+                if(UserName == DoctorManagement.DoctorDataBase[i].Name && Convert.ToInt32(Id) == DoctorManagement.DoctorDataBase[i].Id) 
                 {
 
                     returned = true;
@@ -44,7 +59,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             }
             for(int i = 0; i<PatientManagement.PatientDataBase.Count; i++)
             {
-                if (UserName == PatientManagement.PatientDataBase[i].PatientName && Id == PatientManagement.PatientDataBase[i].Id)
+                if (UserName == PatientManagement.PatientDataBase[i].PatientName && Convert.ToInt32(Id) == PatientManagement.PatientDataBase[i].Id)
                 {
                     Patient = PatientManagement.PatientDataBase[i]; 
                     IsAPatient = true;
@@ -55,8 +70,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
             if(returned == true)
             {
-                LogInWindow log = new LogInWindow();
-                log.Hide();
+                
 
                 if (IsAPatient == true)
                 {
@@ -68,11 +82,15 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
                 }
                 else
                 {
-
+                    DoctorHomePage doctorHomePage = new DoctorHomePage(Doctor);
+                    doctorHomePage.WindowStartupLocation= WindowStartupLocation.CenterScreen;
+                    doctorHomePage.Show();
 
                 }
 
-                
+                var logInWindow = obj as Window;
+                logInWindow.Close();
+
             }
             
 

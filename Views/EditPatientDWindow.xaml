@@ -1,0 +1,33 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.EditPatientDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        Name ="editpatientwindow"
+        mc:Ignorable="d"
+        Title="EditPatientDWindow" Height="450" Width="400">
+    <Border>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="340"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel HorizontalAlignment="Left" Width="249" Margin="60,0,0,0" Grid.Row="1">
+                <TextBlock Text="Name"/>
+                <TextBox Text="{Binding NewPatientName}"/>
+                <TextBlock Text="ID"/>
+                <TextBox Text="{Binding NewId}"/>
+                <TextBlock Text="Contact Number"/>
+                <TextBox Text="{Binding NewContactNumber}"/>
+                <TextBlock Text="Medical History"/>
+                <TextBox Text="{Binding NewId}" Height="150" TextWrapping="Wrap"/>
+            </StackPanel>
+            <Button Content="Done" CommandParameter="{x:Reference Name= editpatientwindow}" Command="{Binding SavePatientInfoCommand}"  HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top" Height="28" Width="73" Grid.Row="2"/>
+        </Grid>
+        
+    </Border>
+</Window>

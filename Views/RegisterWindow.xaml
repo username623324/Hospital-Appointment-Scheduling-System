@@ -1,0 +1,98 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Name ="registerpage"
+        Title="RegisterWindow" Height="450" Width="400">
+    
+    <Border Background="White">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="350"/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical"
+                    Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                <TextBlock Text="Please Enter Your Credentials" 
+                       FontSize="15"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       Padding="10"
+                           />
+                <Grid VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="User Name" 
+                       Grid.Row="0"
+                       Margin="0,15"
+                       HorizontalAlignment="Left"/>
+                    <TextBox Grid.Column="1"
+                     Text="{Binding Name}"
+                     Grid.Row="1"
+                     Padding="0,5"
+                     Width="255"
+                     HorizontalAlignment="Left"
+                     />
+                    <TextBlock Text="Contact Number" 
+                       Grid.Row="2"
+                       Margin="0,15"
+                       HorizontalAlignment="Left"/>
+                    <TextBox Grid.Row="3"
+                         Text="{Binding ContactNumber}"
+                         Padding="0,5"                           
+                         Width="255"
+                         HorizontalAlignment="Left"/>
+                </Grid>
+
+                <Button Content="Register" 
+                            CommandParameter="{x:Reference Name=registerpage}"
+                            Command="{Binding AddCredentialsCommand}"
+                            Foreground="White"
+                            Background="Black"
+                            Margin="0,25"
+                            Height="35"
+                            Width="250"/>
+                <Button Content="Cancel"
+                        CommandParameter="{x:Reference Name=registerpage}"
+                        Command="{Binding CancelCommand}"
+                        Foreground="White"
+                        Background="Black"
+                        Margin="0,25"
+                        HorizontalAlignment="Right"
+                        Height="25"
+                        Width="50"/>
+                
+            </StackPanel>
+
+
+
+
+
+
+
+        </Grid>
+
+    </Border>
+</Window>

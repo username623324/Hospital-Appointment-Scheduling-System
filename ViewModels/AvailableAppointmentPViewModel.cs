@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class AvailableAppointmentPViewModel: NotifyPropertyChanged
     {
-        public Patient Patient { get; set; }
+        public Patient LoggedInPatient { get; set; }
         public Doctor Doctor { get; set; }
         public ICommand AddAppointmentCommand { get; set; }
 
@@ -31,15 +32,18 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         }
 
 
-        public AvailableAppointmentPViewModel(Doctor doctor)
+        public AvailableAppointmentPViewModel(Patient patient, Doctor doctor)
         {
             Doctor = doctor;
+            LoggedInPatient = patient;
             AddAppointmentCommand = new RelayCommand(AddAppointment, (s) => true);
         }
 
         private void AddAppointment(object obj)
         {
-            SelectedAppointment.Patient = this.Patient;
+                  
+            AppointmentManagement.AddAppointment(SelectedAppointment, LoggedInPatient);
+
         }
     }
 }

@@ -34,8 +34,14 @@ namespace Hospital_Appointment_Scheduling_System.Models
             set
             {
                 _patient = value;
-                Condition = AvailableOrNot.Taken;
-                OnPropertyChanged("Patient");
+                if(Patient.PatientName != null)
+                {
+                    Condition = AvailableOrNot.Taken;
+                }
+                else
+                    Condition = AvailableOrNot.Available;
+                    
+                    OnPropertyChanged("Patient");
             }
         }
 
@@ -52,18 +58,18 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public AvailableOrNot Condition
         {
             get { return _condition; }
-            set { _condition = value; OnPropertyChanged(nameof(Condition)); }
+            set { _condition = value; 
+                OnPropertyChanged("Condition"); }
         }
 
-        public Appointment(int? id, DateOnly? date, TimeOnly? time, Status? status, Patient patient, Doctor doctorAssigned)
+        public Appointment(int? id, DateOnly? date, TimeOnly? time, Patient patient, Doctor doctorAssigned)
         {
             Id = id;
             Date = date;
             Time = time;
-            Status = status;
             Patient = patient;
             DoctorAssigned = doctorAssigned;
-            Condition = AvailableOrNot.Available;
+            
         }
 
         public Appointment()

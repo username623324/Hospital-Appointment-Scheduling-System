@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
-        Title="AvailableAppointmentPWindow" Height="450" Width="500">
+        Title="AvailableAppointmentPWindow" Height="500" Width="500">
     <Border>
 
         <Grid>
@@ -22,13 +22,29 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        >
+                <TextBlock Text="Dr. "
+                           FontSize="15"/>
+                <TextBlock Text="{Binding Doctor.Name}"
+                           FontSize="15"/>
+                <TextBlock Text="'s Schedule"
+                           FontSize="15"
+                           Width="105"
+                           />
+            </StackPanel>
+            
+            
             <StackPanel Grid.Row=" 1"
                         Grid.Column="1"
                         Margin="1,1,1,1">
                 <ListView x:Name="AppointmentList"
                           ItemsSource="{Binding Doctor.Appointments}"
                           SelectedItem="{Binding SelectedAppointment}"
-                          SelectedIndex="{Binding SelectedDoctorIndex}" Height="347">
+                          SelectedIndex="{Binding SelectedAppointmentIndex}" Height="347">
 
                     <ListView.View>
                         <GridView>
@@ -50,16 +66,17 @@
 
                 </ListView>
 
-
-
-
             </StackPanel>
-            
 
-
-
-
-
+            <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Content="Add Appointment"
+                    Height="30"
+                    Width="100"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="10"
+                    Command="{Binding AddAppointmentCommand}"/>
 
         </Grid>
         
