@@ -27,6 +27,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         {
 
         };
+        public static ObservableCollection<Appointment> AssignedDoctorAppointments {  get; set; } = new ObservableCollection<Appointment>() {  };
 
         public static ObservableCollection<Appointment> GetAppointments()
         {   
@@ -99,6 +100,21 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
             return PatientAppointmentDataBase;
 
+        }
+
+        public static ObservableCollection<Appointment> GetAssignedDoctorAppointments()
+        {
+            foreach(Appointment appointment in AppointmentDataBase)
+            {
+                if(appointment.DoctorAssigned.Name != null)
+                {
+                    if(!AssignedDoctorAppointments.Contains(appointment))
+                    AssignedDoctorAppointments.Add(appointment);
+
+                }
+            }
+
+            return AssignedDoctorAppointments;
         }
 
         public static void AddAppointment(Appointment appointment, Patient patient)

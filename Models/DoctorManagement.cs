@@ -34,8 +34,6 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Doctor> GetDoctors()
         {
             
-            AppointmentManagement.AssignAppointment();
-
             return DoctorDataBase;
             
         }

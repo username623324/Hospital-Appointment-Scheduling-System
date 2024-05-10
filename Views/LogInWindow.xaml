@@ -9,7 +9,7 @@
         Title="LogInWindow" Height="450" Width="400"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Grid Background="White">
 
         <Grid.RowDefinitions>
 
@@ -26,11 +26,7 @@
 
         <StackPanel Grid.RowSpan="3"
                     Grid.ColumnSpan="3">
-           <Image Source="/Image/login2.jpg" Opacity="0.4" />
-
-
-
-
+           <Image Source="/Image/login2.jpg" Opacity="0.5" />
 
         </StackPanel>
 

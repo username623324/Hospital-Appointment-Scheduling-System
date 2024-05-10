@@ -44,7 +44,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         private void AddHistory(object obj)
         {
-            AddMedicalHistoryWindow add = new AddMedicalHistoryWindow();//not working
+            AddMedicalHistoryWindow add = new AddMedicalHistoryWindow(PatientMedicalHistory);//can add but is broken
             add.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             add.Show();
 

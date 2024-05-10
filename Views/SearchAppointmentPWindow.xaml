@@ -1,0 +1,94 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.SearchAppointmentPWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Title="SearchAppointmentPWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="330"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="540"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <StackPanel Grid.Row="1"
+            Grid.Column="1">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Height="25"
+               Content="Search by"/>
+                <ComboBox x:Name="FilterSearch"
+                 ToolTip="Shows filter"
+                          Width="75"
+                          ItemsSource="{Binding SearchOptions}"
+                          SelectedValue="{Binding SelectedOption,
+                          UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="FilterTextBox"
+                         TextChanged="FilterTextBox_TextChanged"
+                         Width="200" Height="26"/>
+                <Label Content="Search by Date"/>
+                <DatePicker x:Name="FilterDatePicked"
+                            DatePicker.SelectedDateChanged="FilterDate_ListChange"
+                            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+            Grid.Column="1" Margin="0,30,0,0">
+
+
+            <ListView Name="AppointmentList"
+              ItemsSource="{Binding Appointments}"
+              SelectedItem="{Binding SelectedAppointment}"
+              SelectedIndex="{Binding SelectedAppointmentIndex}" Height="294">
+
+
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}"
+                                        Header="ID"
+                                        Width="40"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Date}"
+                                        Header="Date"
+                                        Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding DoctorAssigned.Name}"
+                                        Header="Doctor"
+                                        Width="150"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Condition}"
+                                        Header="Status"
+                                        Width="100"/>
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+        </StackPanel>
+
+        <Button Grid.Column="1"
+                Grid.Row="3"
+                Content="Add Appointment"
+                Command="{Binding AddAppointmentCommand}"
+                Width="100"
+                Height="30"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"/>
+
+
+    </Grid>
+</Window>

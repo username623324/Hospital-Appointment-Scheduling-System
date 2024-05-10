@@ -18,14 +18,23 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         public ICommand ViewMyAppointmentCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand ShowDoctorCommand { get; set; }
+        public ICommand ShowSearchAppointmentCommand { get; set; }
      
 
         public PatientHomePageViewModel(Patient loggedInPatient)
         {
+            ShowSearchAppointmentCommand = new RelayCommand(ShowSearchAppointment, (s)=> true);
             ViewMyAppointmentCommand = new RelayCommand(ViewMyAppointment, (s)=> true);
             LogOutCommand = new RelayCommand(LogOut, (s)=> true);
             ShowDoctorCommand = new RelayCommand(ShowDoctor, (s)=> true);
             LoggedInPatient = loggedInPatient;
+        }
+
+        private void ShowSearchAppointment(object obj)
+        {
+            SearchAppointmentPWindow searchAppointmentPWindow = new SearchAppointmentPWindow(LoggedInPatient);
+            searchAppointmentPWindow.WindowStartupLocation=WindowStartupLocation.CenterScreen;
+            searchAppointmentPWindow.Show();
         }
 
         private void ShowDoctor(object obj)

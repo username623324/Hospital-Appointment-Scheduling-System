@@ -28,7 +28,7 @@
 
             <StackPanel Grid.RowSpan="3"
                         Grid.ColumnSpan="3">
-                <Image Source="/Image/back.jpg" Height="445" />
+                <Image Source="/Image/back.jpg" Height="445" Stretch="Fill"/>
 
                 
             </StackPanel>
@@ -86,6 +86,13 @@
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
                         >
+                <Button Content="Search Appointments"
+                        Command="{Binding ShowSearchAppointmentCommand}"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        FontWeight="Bold"
+                        Width="160"/>
 
                 <Button Content="My Appointments"
                         Command="{Binding ViewMyAppointmentCommand}"
@@ -103,6 +110,7 @@
                         Foreground="White"
                         FontWeight="Bold"
                         Cursor="Hand"/>
+                
             </StackPanel>
 
             <StackPanel Grid.ColumnSpan="3"

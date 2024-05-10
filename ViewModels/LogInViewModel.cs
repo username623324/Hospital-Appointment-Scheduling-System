@@ -25,7 +25,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         public LogInViewModel()
         {
-            
+            AppointmentManagement.AssignAppointment();//assign pregenerated appointments to doctor 
             LogInCommand = new RelayCommand(LogIn, (s)=>true);
             RegisterCommand = new RelayCommand(Register, (s)=>true);
 

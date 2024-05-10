@@ -21,10 +21,10 @@ namespace Hospital_Appointment_Scheduling_System.Views
     /// </summary>
     public partial class AddMedicalHistoryWindow : Window
     {
-        public AddMedicalHistoryWindow()
+        public AddMedicalHistoryWindow(List<string> temp)
         {
             InitializeComponent();
-            AddMedicalHistoryViewModel addMedicalHistoryViewModel = new AddMedicalHistoryViewModel();
+            AddMedicalHistoryViewModel addMedicalHistoryViewModel = new AddMedicalHistoryViewModel(temp);
             this.DataContext = addMedicalHistoryViewModel;
 
         }

@@ -19,11 +19,11 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
        
         
 
-        public AddMedicalHistoryViewModel()
+        public AddMedicalHistoryViewModel(List<string> temp)
         {
             
             AddMedicalInfoCommand = new RelayCommand(AddMedicalInfo, (s)=> true);
-            TempMedicalHistory = new List<string>();
+            TempMedicalHistory = temp;
         }
 
         private void AddMedicalInfo(object obj)
