@@ -24,8 +24,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
         private Doctor? _doctorAssigned;
         public DateOnly? Date {  get; set; }
         public TimeOnly? Time { get; set; }
-        public Status? Status { get; set; }
+        private Status? _status;
         private AvailableOrNot _condition;
+
 
 
         public Patient? Patient
@@ -37,6 +38,15 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 if(Patient.PatientName != null)
                 {
                     Condition = AvailableOrNot.Taken;
+                    
+                    
+                    if (DateOnly.FromDateTime(DateTime.Now) < Date)
+                    {
+                        Status = Models.Status.Upcoming;
+                    }
+                    else
+                        Status = Models.Status.Completed;
+                    
                 }
                 else
                     Condition = AvailableOrNot.Available;
@@ -54,7 +64,11 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 OnPropertyChanged("DoctorAssigned");
             }
         }
-
+        public Status? Status
+        {
+            get { return _status; }
+            set { _status = value; OnPropertyChanged("Status"); }
+        }
         public AvailableOrNot Condition
         {
             get { return _condition; }

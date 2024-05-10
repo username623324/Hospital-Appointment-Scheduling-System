@@ -16,41 +16,30 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Doctor> DoctorDataBase { get; set; } = new ObservableCollection<Doctor>()
         {
             
-            new Doctor(0, "sins", "eating ass", new List<Appointment>())
+            new Doctor(0,"sins", "ass", new List<Appointment>()),
+            new Doctor(1, "Samantha", "Anesthesiology", new List<Appointment>()),
+            new Doctor(2, "Jonathan", "Cardiology", new List<Appointment>()),
+            new Doctor(3, "Roman", "Dermatology", new List<Appointment>()),
+            new Doctor(4, "Dean", "Genetics and Genome", new List<Appointment>()),
+            new Doctor(5, "Seth", "Neurology", new List<Appointment>()),
+            new Doctor(6, "Brock", "Orthopaedic Surgery", new List<Appointment>()),
+            new Doctor(7, "Chris", "Pathology", new List<Appointment>()),
+            new Doctor(8, "Kevin", "Pediatrics", new List<Appointment>()),
+            new Doctor(9, "Cassidy", "Plastic Surgery", new List<Appointment>()),
+            new Doctor(10, "Jesse", "Psychiatry", new List<Appointment>())
+
 
         };
 
         public static ObservableCollection<Doctor> GetDoctors()
         {
-            Doctor emptydoctor = new Doctor();
-            Patient emptypatient = new Patient();
-
-            var faker = new Faker();
-            faker.Random = new Randomizer(100);
-            for (int i = 0; i < 10; i++)
-            {
-                
-                string name = faker.Name.FullName();
-                string specialization = faker.Random.Word();
-                var fakes = new Doctor(i+1, name, specialization, new List<Appointment>());
-                DoctorDataBase.Add(fakes);
-
-                for (int j = 0; j < 5; j++)
-                {
-                    DateOnly date = faker.Date.BetweenDateOnly(new DateOnly(2024, 1, 1), new DateOnly(2025, 12, 31));
-                    TimeOnly time = faker.Date.BetweenTimeOnly(new TimeOnly(8, 0), new TimeOnly(16, 0));
-                    Appointment appointment = new Appointment(j + 1, date, time, emptypatient, DoctorDataBase[i+1]);
-                    AppointmentManagement.AppointmentDataBase.Add(appointment);
-                    DoctorDataBase[i+1].Appointments.Add(appointment);
-
-                }
-
-
-
-            }
             
+            AppointmentManagement.AssignAppointment();
 
             return DoctorDataBase;
+            
         }
+
+
     }
 }

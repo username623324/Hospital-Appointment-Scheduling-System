@@ -1,0 +1,85 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.ShowPatientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Title="ShowPatientsWindow" Height="450" Width="600">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="320"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Height="25"
+           Content="Search by"/>
+                <ComboBox x:Name="FilterSearchPatient"
+              ToolTip="Shows the amount of records per page"
+              Width="100"
+              ItemsSource="{Binding SearchOptions}"
+              SelectedValue="{Binding SelectedOption,
+              UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="FilterPatientTextBox"
+             TextChanged="FilterTextBoxPatient_TextChanged"
+             Width="337" Height="26"/>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1" Margin="0,26,0,0">
+
+            <ListView Name="DoctorList"
+                      ItemsSource="{Binding Patients}"
+                      SelectedItem="{Binding SelectedPatient}"
+                      SelectedIndex="{Binding SelectedPatientIndex}" Height="294">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}"
+                                        Header="ID"
+                                        Width="40"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding PatientName}"
+                                        Header="Name"
+                                        Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding PatientContactNumber}"
+                                        Header="Contact Number"
+                                        Width="264"/>
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+        </StackPanel>
+
+
+
+        <Button Grid.Column="1"
+        Grid.Row="2"
+        Height="30"
+        Width="80"
+        Content="Edit Info"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Top"
+        Margin="10" 
+        Command="{Binding EditPatientInfoCommand}"/>
+
+    </Grid>
+</Window>

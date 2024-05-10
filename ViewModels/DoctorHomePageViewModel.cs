@@ -14,56 +14,50 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class DoctorHomePageViewModel: NotifyPropertyChanged
     {
-        public ObservableCollection<Patient> Patients { get; set; }
         public Doctor LoggedInDoctor { get; set; }
-        private Patient _selectedPatient;
-        private int _selectedPatientIndex;
-        private List<string> _searchOptions = new List<string>() { "Name", "ID" };
-        private string _selectedOption = "Name";
-        public ICommand EditPatientInfoCommand { get; set; }
-
-        public List<string> SearchOptions
-        {
-            get { return _searchOptions; }
-            set { _searchOptions = value; OnPropertyChanged(nameof(SearchOptions)); }
-        }
-
-        public string SelectedOption
-        {
-            get { return _selectedOption; }
-            set { _selectedOption = value; OnPropertyChanged(nameof(SelectedOption)); }
-        }
-
-        public Patient SelectedPatient
-        {
-            get { return _selectedPatient; }
-            set { _selectedPatient = value;
-                OnPropertyChanged(nameof(SelectedPatient));
-            }
-        }
-
-        public int SelectedPatientIndex
-        {
-            get { return _selectedPatientIndex; }
-            set { _selectedPatientIndex = value;
-                OnPropertyChanged(nameof(SelectedPatientIndex));
-            }
-        }
+        public ICommand LogOutCommand { get; set; }
+        public ICommand ViewMyAppointmentCommand { get; set; }
+        public ICommand ViewScheduledAppointmentCommand { get; set; }
+        public ICommand ShowPatientsCommand { get; set; }
 
         public DoctorHomePageViewModel(Doctor loggedInDoctor)
         {
-
-            Patients = PatientManagement.GetPatients();
+            ViewScheduledAppointmentCommand = new RelayCommand(ViewScheduledAppointment, (s)=> true);
             LoggedInDoctor = loggedInDoctor;
-            EditPatientInfoCommand = new RelayCommand(EditPatientInfo, (s)=>true);
+            LogOutCommand = new RelayCommand(LogOut, (s)=> true);
+            ViewMyAppointmentCommand = new RelayCommand(ViewMyAppointment, (s)=>true);
+            ShowPatientsCommand = new RelayCommand(ShowPatients, (s)=> true);
 
         }
 
-        private void EditPatientInfo(object obj)
+        private void ShowPatients(object obj)
         {
-            EditPatientDWindow editPatientDWindow = new EditPatientDWindow(SelectedPatient);
-            editPatientDWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            editPatientDWindow.Show();
+            ShowPatientsWindow showPatientsWindow = new ShowPatientsWindow(LoggedInDoctor);
+            showPatientsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            showPatientsWindow.Show();
+        }
+
+        private void ViewScheduledAppointment(object obj)
+        {
+            AppointmentWindow apwindow = new AppointmentWindow();
+            apwindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            apwindow.Show();
+        }
+
+        private void LogOut(object obj)
+        {
+            LogInWindow login = new LogInWindow();
+            login.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            login.Show();
+            var dochome = obj as Window;
+            dochome.Close();
+        }
+
+        private void ViewMyAppointment(object obj)
+        {
+            DoctorsViewTheirAppointmentWindow doctorsViewTheirAppointmentWindow = new DoctorsViewTheirAppointmentWindow(LoggedInDoctor);
+            doctorsViewTheirAppointmentWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            doctorsViewTheirAppointmentWindow.Show();
         }
     }
 }

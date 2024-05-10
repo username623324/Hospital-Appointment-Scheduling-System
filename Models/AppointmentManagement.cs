@@ -23,6 +23,11 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         };
 
+        public static ObservableCollection<Appointment> ScheduledAppointmentDataBase { get; set; } = new ObservableCollection<Appointment>()
+        {
+
+        };
+
         public static ObservableCollection<Appointment> GetAppointments()
         {   
             Doctor emptydoctor = new Doctor();
@@ -34,7 +39,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             for(int i = 0; i < 100;  i++)
             {
                 
-                DateOnly date = faker.Date.BetweenDateOnly(new DateOnly(2024, 1,1), new DateOnly(2025,12,31));
+                DateOnly date = faker.Date.BetweenDateOnly(new DateOnly(2024, 5,11), new DateOnly(2024,5,31));
                 TimeOnly time = faker.Date.BetweenTimeOnly(new TimeOnly(8,0), new TimeOnly(16,0));
                 Appointment appointment = new Appointment(i+1, date, time, emptypatient, emptydoctor);
                 AppointmentDataBase.Add(appointment);
@@ -42,6 +47,41 @@ namespace Hospital_Appointment_Scheduling_System.Models
             }
 
             return AppointmentDataBase; 
+        }
+
+        public static ObservableCollection<Appointment> GetScheduledAppointments()
+        {
+
+            foreach(Appointment appointment in AppointmentDataBase)
+            {
+                if(appointment.Condition == AvailableOrNot.Taken)
+                {   if(!ScheduledAppointmentDataBase.Contains(appointment))
+                    ScheduledAppointmentDataBase.Add(appointment);
+                }
+            }
+
+            return ScheduledAppointmentDataBase;
+            
+        }
+
+        public static void AssignAppointment()
+        {
+            int x = 0;
+            GetAppointments();
+            foreach(Doctor doctor in DoctorManagement.DoctorDataBase)
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    if (!doctor.Appointments.Contains(AppointmentDataBase[x]))
+                    {
+                        doctor.Appointments.Add(AppointmentDataBase[x]);
+                        AppointmentDataBase[x].DoctorAssigned = doctor;
+                    }
+                    x++;
+                }
+                
+            }
+
         }
 
         public static ObservableCollection<Appointment> GetPatientAppointments(Patient patient)
@@ -101,9 +141,15 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public static void CancelAppointment(Appointment appointment)
         {
-            appointment.Patient = new Patient();
             
+            appointment.Status = Status.Cancelled;//??not final
+            appointment.Condition = AvailableOrNot.Available;
             PatientAppointmentDataBase.Remove(appointment);
+            string message = "Appointment cancelled";
+            string caption = "Information";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Information;
+            MessageBox.Show(message, caption, button, icon);
         }
     }
 }

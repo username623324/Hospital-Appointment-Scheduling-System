@@ -14,31 +14,50 @@ using Hospital_Appointment_Scheduling_System.Models;
 using Hospital_Appointment_Scheduling_System.Views;
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    public class EditPatientViewModel
+    public class EditPatientViewModel: NotifyPropertyChanged
     {   
         public ICommand SavePatientInfoCommand { get; set; }
+        public ICommand AddHistoryCommand { get; set; }
         public Patient Patient { get; set; }
         public int? NewId {  get; set; }
         public string? NewPatientName { get; set; }
         public string? NewContactNumber { get; set; }
+        private List<string>? _patientMedicalHistory;
+
+
+        public List<string>? PatientMedicalHistory
+        {
+            get { return _patientMedicalHistory; }
+            set { _patientMedicalHistory = value; OnPropertyChanged("PatientMedicalHistory"); }
+        }
 
         public EditPatientViewModel(Patient patient)
         {
             Patient = patient;
-            NewId = patient.Id;
             NewPatientName = patient.PatientName;
             NewContactNumber = patient.PatientContactNumber;
+            PatientMedicalHistory = patient.PatientMedicalHistory;
+
             SavePatientInfoCommand = new RelayCommand(SavePatientInfo, (s) => true);
+            AddHistoryCommand = new RelayCommand(AddHistory, (s)=> true);
+        }
+
+        private void AddHistory(object obj)
+        {
+            AddMedicalHistoryWindow add = new AddMedicalHistoryWindow();//not working
+            add.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            add.Show();
+
         }
 
         private void SavePatientInfo(object obj)
         {
             Patient.PatientName = NewPatientName;
             Patient.PatientContactNumber = NewContactNumber;
-            Patient.Id = NewId;
+            Patient.PatientMedicalHistory = PatientMedicalHistory;
 
             var editPatientDWindow = obj as Window;
-            editPatientDWindow.Close();
+            editPatientDWindow.Close(); 
 
             string message = "Update Complete!";
             string caption = "Information";

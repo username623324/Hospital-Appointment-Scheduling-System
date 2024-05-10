@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
-        Title="PatientViewTheirAppointmentWindow" Height="500" Width="500">
+        Title="PatientViewTheirAppointmentWindow" Height="500" Width="550">
     <Border>
 
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="430"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -21,6 +21,13 @@
                 <RowDefinition Height=" 350"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Label Content="My Appointments"
+                   Grid.Column ="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="30"
+                   FontStyle="Italic"/>
 
             <StackPanel Grid.Row=" 1"
                      Grid.Column="1"
@@ -35,13 +42,16 @@
                             <GridViewColumn DisplayMemberBinding="{Binding Id}"
                                          Header="ID"
                                          Width="50"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding DoctorAssigned.Name}"
+                                            Header="Doctor"
+                                            Width="132"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Date}"
                                          Header="Date"
                                          Width="80"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Time}"
                                          Header="Time"
                                          Width="80"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Condition}"
+                            <GridViewColumn DisplayMemberBinding="{Binding Status}"
                                          Header="Status"
                                          Width="80"/>
 
@@ -60,6 +70,7 @@
                  HorizontalAlignment="Right"
                  VerticalAlignment="Center"
                  Margin="10"
+                    IsEnabled="{Binding ButtonCommand}"
                  Command="{Binding CancelAppointmentCommand}"/>
 
 

@@ -28,30 +28,5 @@ namespace Hospital_Appointment_Scheduling_System.Views
             this.DataContext = doctorHomePageVM;
         }
 
-        private void FilterTextBoxPatient_TextChanged(object sender, EventArgs e)
-        {
-
-            DoctorList.Items.Filter = FilterMethod;
-        }
-
-        private bool FilterMethod(object obj)
-        {
-            bool condition;
-            var user = (Patient)obj;
-            if (FilterSearchPatient.SelectedValue == "Name")
-            {
-                condition = user.PatientName.Contains(FilterPatientTextBox.Text, StringComparison.OrdinalIgnoreCase);
-            }
-            else
-            {
-                string lol = Convert.ToString(user.Id);
-                condition = lol.Contains(FilterPatientTextBox.Text, StringComparison.OrdinalIgnoreCase);
-            }
-
-
-            return condition;
-
-
-        }
     }
 }

@@ -16,6 +16,14 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         public ICommand CancelAppointmentCommand { get; set; }
         private Appointment _selectedAppointment;
         private int _selectedAppointmentIndex;
+        private bool _buttonCommand;
+
+        public bool ButtonCommand
+        {
+            get { return _buttonCommand; }
+            set { _buttonCommand = value; 
+                OnPropertyChanged("ButtonCommand"); }
+        }
 
         public ObservableCollection<Appointment> Appointments
         {
@@ -30,6 +38,12 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             get { return _selectedAppointment; }
             set {
                 _selectedAppointment = value; 
+                if (value == null) 
+                { 
+                    ButtonCommand = false;
+                }
+                else
+                    ButtonCommand = true;
                OnPropertyChanged("SelectedAppointment"); } 
         
         }

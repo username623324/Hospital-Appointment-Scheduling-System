@@ -31,30 +31,6 @@ namespace Hospital_Appointment_Scheduling_System.Views
             
         }
 
-        private void FilterTextBoxDoctor_TextChanged(object sender, EventArgs e)
-        {
-
-            DoctorList.Items.Filter = FilterMethod;
-        }
-
-        private bool FilterMethod(object obj)
-        {
-            bool condition;
-            var user = (Doctor)obj;
-            if (FilterSearchDoctor.SelectedValue == "Name")
-            {
-                condition = user.Name.Contains(FilterDoctorTextBox.Text, StringComparison.OrdinalIgnoreCase);
-            }
-            else
-            {
-                condition = user.Specialization.Contains(FilterDoctorTextBox.Text, StringComparison.OrdinalIgnoreCase);
-            }
-                
-
-            return condition;
-            
-            
-        }
 
        
     }

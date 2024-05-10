@@ -15,52 +15,37 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
     public class PatientHomePageViewModel: NotifyPropertyChanged
     {  
         public Patient LoggedInPatient { get; set; }
-        public ObservableCollection<Doctor> Doctors { get; set; }
-        private List<string> _searchOptions = new List<string>() { "Name", "Specialization"};
-        private string _selectedOption = "Name";
-        private Doctor _selectedDoctor;
-        private int _selectedDoctorIndex;
         public ICommand ViewMyAppointmentCommand { get; set; }
-        public ICommand ViewAppointmentCommand { get; set; }
-
-
-        public List<string> SearchOptions
-        {
-            get { return _searchOptions; }
-            set { _searchOptions = value; OnPropertyChanged("SearchOptions"); }
-        }
-
-        public string SelectedOption
-        {
-            get { return _selectedOption; }
-            set { _selectedOption = value; OnPropertyChanged("SelectedOption"); }
-        }
-
-        public Doctor SelectedDoctor
-        {
-            get { return _selectedDoctor; }
-            set
-            {
-                _selectedDoctor = value;
-                OnPropertyChanged("SelectedDoctor");
-            }
-        }
-
-        public int SelectedDoctorIndex
-        {
-            get { return _selectedDoctorIndex; }
-            set { _selectedDoctorIndex = value;
-                OnPropertyChanged("SelectedDoctorIndex");
-            }
-        }
-
+        public ICommand LogOutCommand { get; set; }
+        public ICommand ShowDoctorCommand { get; set; }
+     
 
         public PatientHomePageViewModel(Patient loggedInPatient)
         {
-            Doctors = DoctorManagement.GetDoctors();
-            ViewAppointmentCommand = new RelayCommand(ViewAppointment, (s) => true);
             ViewMyAppointmentCommand = new RelayCommand(ViewMyAppointment, (s)=> true);
+            LogOutCommand = new RelayCommand(LogOut, (s)=> true);
+            ShowDoctorCommand = new RelayCommand(ShowDoctor, (s)=> true);
             LoggedInPatient = loggedInPatient;
+        }
+
+        private void ShowDoctor(object obj)
+        {
+            ShowDoctorWindow showDoctorWindow = new ShowDoctorWindow(LoggedInPatient);
+            showDoctorWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            showDoctorWindow.Show();
+        }
+
+        private void LogOut(object obj)
+        {
+
+            LogInWindow logInWindow = new LogInWindow();
+            logInWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            logInWindow.Show();
+            
+            var window = obj as Window;
+            window.Close();
+
+            
         }
 
         private void ViewMyAppointment(object obj)
@@ -71,11 +56,6 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         }
        
 
-        private void ViewAppointment(object obj)
-        {   
-            var availableAppointmentPWindow = new AvailableAppointmentPWindow(LoggedInPatient, SelectedDoctor);
-            availableAppointmentPWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            availableAppointmentPWindow.Show();
-        }
+
     }
 }

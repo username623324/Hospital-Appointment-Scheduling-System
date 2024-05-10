@@ -5,88 +5,160 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
-        Title="DoctorHomePage" Height="450" Width="800">
+        Name ="doctorhomepage"
+        Title="DoctorHomePage" Height="465" Width="800">
+    <Border>
 
-    <Grid>
+        <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="320"/>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="400"/>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.RowSpan="2"
+                        Grid.ColumnSpan="3">
+                <Image Source="/Image/back.jpg" Height="449" />
 
 
-        <StackPanel Grid.Row="1"
-        Grid.Column="1">
 
-            <StackPanel Orientation="Horizontal">
-
-                <Label Height="25"
-                   Content="Search by"/>
-                <ComboBox x:Name="FilterSearchPatient"
-                      ToolTip="Shows the amount of records per page"
-                      Width="100"
-                      ItemsSource="{Binding SearchOptions}"
-                      SelectedValue="{Binding SelectedOption,
-                      UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="FilterPatientTextBox"
-                     TextChanged="FilterTextBoxPatient_TextChanged"
-                     Width="337" Height="26"/>
             </StackPanel>
-        </StackPanel>
+
+            <StackPanel Grid.RowSpan="2"
+            Grid.ColumnSpan="3">
+
+                <MediaElement Name="myMediaElement" >
+                    <MediaElement.Triggers>
+                        <EventTrigger RoutedEvent="MediaElement.Loaded">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play
+                                  over and over indefinitely. stackoverflow-->
+                                        <MediaTimeline Source="E:\visuallllllll\hospi\Image\video.mp4" Storyboard.TargetName="myMediaElement" RepeatBehavior="Forever" />
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </MediaElement.Triggers>
+                </MediaElement>
+
+            </StackPanel>
 
 
-        <StackPanel Grid.Row="1"
-        Grid.Column="1" Margin="0,26,0,0">
+            <StackPanel Grid.ColumnSpan="3"
+             Background="#333333" Opacity="0.5"/>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
 
-            <ListView Name="DoctorList"
-          ItemsSource="{Binding Patients}"
-          SelectedItem="{Binding SelectedPatient}"
-          SelectedIndex="{Binding SelectedPatientIndex}" Height="294"
-          >
+                <Image Source="/Image/logonew.png" 
+                        Margin="3"
+                        Height="50"/>
+                <TextBlock FontWeight="Bold"
+                Foreground="White" FontFamily="Rockwell Condensed"
+                VerticalAlignment="Center"
+                >
+                A <LineBreak/>
+                Very Real<LineBreak/>
+                Company
+                </TextBlock>
 
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}"
-                            Header="ID"
-                            Width="50"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding PatientName}"
-                            Header="Name"
-                            Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding PatientContactNumber}"
-                            Header="Contact Number"
-                            Width="150"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Status}"
-                            Header="Status"
-                            Width="100"/>
 
-                    </GridView>
-                </ListView.View>
+            </StackPanel>
 
-            </ListView>
 
-        </StackPanel>
 
-        <Button Grid.Column="1"
-                Grid.Row="2"
-                Height="30"
-                Width="80"
-                Content="Edit Info"
-                HorizontalAlignment="Right"
-                Margin="10" 
-                Command="{Binding EditPatientInfoCommand}"
-                />
-        <Button Grid.Column="0"
-                Height="50"
+            <StackPanel Orientation="Horizontal"
+                Grid.ColumnSpan="2"
                 VerticalAlignment="Top"
-                Content="My Appointment" Grid.Row="1"/>
+                        HorizontalAlignment="Right">
+
+                <Button Command="{Binding ViewMyAppointmentCommand}"
+                Height="55"
+                Width="150"
+                Content="My Appointment"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        FontWeight="Bold"
+                        Cursor="Hand"/>
+
+                <Button Height="55"
+                Width="150"
+                Content="Scheduled Appointments"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Command="{Binding ViewScheduledAppointmentCommand}"/>
+                <Button Height="55"
+                Width="150"
+                Content=" Patients"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                Command="{Binding ShowPatientsCommand}"/>
+
+            </StackPanel>
 
 
-    </Grid>
+
+
+
+            <StackPanel Grid.ColumnSpan="3"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,0,0,0">
+
+                <TextBlock Text="{Binding LoggedInDoctor.Name, StringFormat=Welcome {0:C}}"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           Margin=" 0,0,5,10"/>
+                <Ellipse Height="50" 
+                         Width="50"
+                         Margin="2">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Image/Profile.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+            </StackPanel>
+
+            <Button Content="Log Out"
+                    Cursor="Hand"
+                    CommandParameter="{x:Reference Name=doctorhomepage}"
+                    Command="{Binding LogOutCommand}"
+                    Margin="30,0,0,9"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    Grid.Column="2"
+                    Width="50"
+                    Height="18"
+                    FontSize="10"/>
+
+
+
+
+
+        </Grid>
+
+
+    </Border>
+
+
 </Window>

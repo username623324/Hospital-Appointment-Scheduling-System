@@ -25,7 +25,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         public LogInViewModel()
         {
-
+            
             LogInCommand = new RelayCommand(LogIn, (s)=>true);
             RegisterCommand = new RelayCommand(Register, (s)=>true);
 
@@ -52,7 +52,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             {
                 if(UserName == DoctorManagement.DoctorDataBase[i].Name && Convert.ToInt32(Id) == DoctorManagement.DoctorDataBase[i].Id) 
                 {
-
+                    Doctor = DoctorManagement.DoctorDataBase[i];
                     returned = true;
                 }
                 
@@ -74,14 +74,16 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
                 if (IsAPatient == true)
                 {
-
+                    
                     PatientHomePage patientHomePage = new PatientHomePage(Patient);
                     patientHomePage.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     patientHomePage.Show();
                     
+                    
                 }
                 else
                 {
+                    
                     DoctorHomePage doctorHomePage = new DoctorHomePage(Doctor);
                     doctorHomePage.WindowStartupLocation= WindowStartupLocation.CenterScreen;
                     doctorHomePage.Show();
@@ -92,6 +94,8 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
                 logInWindow.Close();
 
             }
+
+
             
 
         }

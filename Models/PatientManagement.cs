@@ -15,7 +15,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Patient> PatientDataBase { get; set; } = new ObservableCollection<Patient>()
         {
 
-            new Patient(0,"joe","123", null)
+            new Patient(0,"joe","123", new List<string>())
 
         };
 
@@ -28,11 +28,6 @@ namespace Hospital_Appointment_Scheduling_System.Models
             {
                 string name = faker.Name.FullName();
                 string number = faker.Phone.PhoneNumber();
-                for (int j = 0; j < 3; j++)
-                {
-                    string hurt = faker.Name.LastName();
-                    medical.Add(hurt);
-                }
 
                 var fakes = new Patient(i+1, name, number, medical);
                 PatientDataBase.Add(fakes);

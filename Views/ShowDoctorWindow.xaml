@@ -1,0 +1,92 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.ShowDoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Title="ShowDoctorWindow" Height="450" Width="600">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="320"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="1"
+            Grid.Column="1">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Height="25"
+        Content="Search by"/>
+                <ComboBox x:Name="FilterSearchDoctor"
+                  ToolTip="Shows the amount of records per page"
+                  Width="100"
+                  ItemsSource="{Binding SearchOptions}"
+                  SelectedValue="{Binding SelectedOption,
+                  UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="FilterDoctorTextBox"
+                 TextChanged="FilterTextBoxDoctor_TextChanged"
+                 Width="337" 
+                 Height="26"
+                 BorderThickness="1"
+                 BorderBrush="#E0E0E0"/>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1"
+             Grid.Column="1" Margin="0,26,0,0">
+
+            <ListView Name="DoctorList"
+                      ItemsSource="{Binding Doctors}"
+                      SelectedItem="{Binding SelectedDoctor}"
+                      SelectedIndex="{Binding SelectedDoctorIndex}" Height="294">
+
+                <ListView.View>
+                    <GridView>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}"
+                                 Header="ID"
+                                 Width="40"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                 Header="Name"
+                                 Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Specialization}"
+                                 Header="Specialization"
+                                 Width="254"/>
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+        </StackPanel>
+
+
+        <Button Height="30"
+                Width="120"
+                Grid.Row="2"
+                Grid.Column="1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Content="View Appointment"
+                Command="{Binding ViewAppointmentCommand}"
+                Margin="50,7,0,0"/>
+
+
+
+
+    </Grid>
+</Window>

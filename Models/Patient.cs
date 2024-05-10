@@ -5,12 +5,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Hospital_Appointment_Scheduling_System.Commands;
 
 namespace Hospital_Appointment_Scheduling_System.Models
 {
-    public class Patient: INotifyPropertyChanged
+    public class Patient: NotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+       
         public int? Id { get; set; }
         private string? _patientName;
         private string? _patientContactNumber;
@@ -51,12 +52,5 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public Patient() { }
 
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

@@ -10,7 +10,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\5752563-uhd_3840_2160_30fps.mp4" />
+    <None Remove="Image\back.jpg" />
+    <None Remove="Image\login2.jpg" />
+    <None Remove="Image\loginwindow.png" />
+    <None Remove="Image\logonew.png" />
+    <None Remove="Image\Profile.png" />
+    <None Remove="Image\Screenshot 2024-05-01 123755.png" />
+    <None Remove="Image\tf2medicpng.png" />
+    <None Remove="Image\video.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bogus" Version="35.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\back.jpg" />
+    <Resource Include="Image\login2.jpg" />
+    <Resource Include="Image\loginwindow.png" />
+    <Resource Include="Image\logonew.png" />
+    <Resource Include="Image\Profile.png" />
+    <Resource Include="Image\Screenshot 2024-05-01 123755.png" />
+    <Resource Include="Image\tf2medicpng.png" />
+    <Content Include="Image\video.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
