@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
-        Title="AppointmentWindow" Height="450" Width="677">
+        Title="AppointmentWindow" Height="450" Width="800">
     <Grid Margin="0,-34,0,-6">
 
         <Grid.RowDefinitions>
@@ -16,12 +16,25 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="550"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.Column="1" Content="Appointments" 
+               VerticalAlignment="Top" 
+               HorizontalAlignment="Center"
+               FontSize="25" Margin="0,37,0,0"
+               FontWeight="Bold"/>
 
 
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Width="230"
+                    Opacity="0.5" Height="226">
+            <Image Source="/Image/background.png" Height="228" Width="354"/>
+
+        </StackPanel>
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1">
@@ -30,7 +43,7 @@
 
                 <Label Height="25"
                        Content="Search by"/>
-               <ComboBox x:Name="FilterSearch"
+                <ComboBox x:Name="FilterSearch"
                ToolTip="Shows the amount of records per page"
                Width="75"
                ItemsSource="{Binding SearchOptions}"
@@ -39,6 +52,12 @@
                 <TextBox x:Name="FilterTextBox"
                 TextChanged="FilterTextBox_TextChanged"
                 Width="200" Height="26"/>
+
+                <Label Content="Search by Date"/>
+                <DatePicker x:Name="FilterDatePicked"
+                            DatePicker.SelectedDateChanged="FilterDate_ListChange"
+                            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            />
 
             </StackPanel>
         </StackPanel>
@@ -49,39 +68,32 @@
                     Grid.Column="1" Margin="0,30,0,0">
 
 
-            <StackPanel Orientation="Horizontal">
-
-
-                <Label Content="Search by Date"/>
-                <DatePicker x:Name="FilterDatePicked"
-                            DatePicker.SelectedDateChanged="FilterDate_ListChange"
-                            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
-                            />
-
-
-            </StackPanel>
 
             <ListView Name="AppointmentList"
+                      Background="Transparent"
                       ItemsSource="{Binding Appointments}"
                       SelectedItem="{Binding SelectedAppointment}"
                       SelectedIndex="{Binding SelectedAppointmentIndex}" Height="294">
 
-                
+
 
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Id}"
-                        Header="ID"
-                        Width="30"/>
+                                        Header="ID"
+                                        Width="40"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Date}"
-                    Header="Date"
-                    Width="200"/>
+                                        Header="Date"
+                                        Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Time}"
+                                        Header="Time"
+                                        Width="120"/>
                         <GridViewColumn DisplayMemberBinding="{Binding DoctorAssigned.Name}"
-                    Header="Doctor"
-                    Width="150"/>
+                                        Header="Doctor"
+                                        Width="150"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Patient.PatientName}"
-                    Header="Patient"
-                    Width="100"/>
+                                        Header="Patient"
+                                        Width="100"/>
 
                     </GridView>
                 </ListView.View>

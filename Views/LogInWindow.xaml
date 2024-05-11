@@ -30,7 +30,7 @@
 
         </StackPanel>
 
-        <Image Source="/Image/loginwindow.png"
+        <Image Source="/Image/background.png"
                Grid.Column="1"
                VerticalAlignment="Top" Height="56" Margin="101,10,101,0" Grid.RowSpan="2"
                />
@@ -40,7 +40,8 @@
         <StackPanel Orientation="Vertical"
                     Grid.Row="1"
                     Grid.Column="1">
-            <TextBlock Text="Login" 
+            <TextBlock Text="Login"
+                       Foreground="White"
                        FontSize="25"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
@@ -56,6 +57,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="User Name" 
+                   Foreground="White"
                    Grid.Row="0"
                    Margin="0,15"
                    HorizontalAlignment="Left"/>
@@ -68,6 +70,7 @@
                   HorizontalAlignment="Left"
                   />
                 <TextBlock Text="ID" 
+                           Foreground="White"
                    Grid.Row="2"
                    Margin="0,15"
                    HorizontalAlignment="Left"/>

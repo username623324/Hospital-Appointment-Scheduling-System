@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Image\5752563-uhd_3840_2160_30fps.mp4" />
     <None Remove="Image\back.jpg" />
+    <None Remove="Image\background.png" />
     <None Remove="Image\login2.jpg" />
     <None Remove="Image\loginwindow.png" />
     <None Remove="Image\logonew.png" />
@@ -27,6 +28,7 @@
 
   <ItemGroup>
     <Resource Include="Image\back.jpg" />
+    <Resource Include="Image\background.png" />
     <Resource Include="Image\login2.jpg" />
     <Resource Include="Image\loginwindow.png" />
     <Resource Include="Image\logonew.png" />

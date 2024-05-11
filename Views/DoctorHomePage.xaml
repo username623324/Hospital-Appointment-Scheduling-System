@@ -25,7 +25,7 @@
 
             <StackPanel Grid.RowSpan="2"
                         Grid.ColumnSpan="3">
-                <Image Source="/Image/back.jpg" Height="449" />
+                <Image Source="/Image/back.jpg" Height="451" />
 
 
 
@@ -59,17 +59,12 @@
              Background="#333333" Opacity="0.5"/>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
 
-                <Image Source="/Image/logonew.png" 
-                        Margin="3"
-                        Height="50"/>
+                <Image Source="/Image/background.png" Height="45" Margin="10,0,0,0 "/>
+
                 <TextBlock FontWeight="Bold"
-                Foreground="White" FontFamily="Rockwell Condensed"
+                Foreground="White" FontFamily="Arial Rounded MT Bold"
                 VerticalAlignment="Center"
-                >
-                A <LineBreak/>
-                Very Real<LineBreak/>
-                Company
-                </TextBlock>
+                ><Run Text="A"/><LineBreak/><Run Text="Very Real"/><LineBreak/><Run Text="Company"/></TextBlock>
 
 
             </StackPanel>
@@ -93,7 +88,7 @@
 
                 <Button Height="55"
                 Width="150"
-                Content="Scheduled Appointments"
+                Content="All Appointments"
                         Background="Transparent"
                         Foreground="White"
                         BorderBrush="Transparent"

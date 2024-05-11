@@ -23,6 +23,24 @@
         </Grid.ColumnDefinitions>
 
 
+        <Label Content="Patients"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="25"
+               FontWeight="Bold"/>
+
+        <StackPanel Grid.Column="1"
+            Grid.Row="1"
+            Margin="0,100,0,0"
+            Opacity="0.5">
+
+            <Image Source="/Image/background.png" Height="192" Width="298" />
+
+
+        </StackPanel>
+
+
         <StackPanel Grid.Row="1"
                     Grid.Column="1">
 
@@ -47,6 +65,7 @@
                     Grid.Column="1" Margin="0,26,0,0">
 
             <ListView Name="DoctorList"
+                      Background="Transparent"
                       ItemsSource="{Binding Patients}"
                       SelectedItem="{Binding SelectedPatient}"
                       SelectedIndex="{Binding SelectedPatientIndex}" Height="294">

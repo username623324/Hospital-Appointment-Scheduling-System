@@ -23,6 +23,16 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <StackPanel Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="0,100,0,0"
+                        Opacity="0.5">
+
+                <Image Source="/Image/background.png" Height="192" Width="298" />
+
+
+            </StackPanel>
+
             <Label Grid.Column="1"
                    Content="My Appointments"
                    HorizontalAlignment="Center"
@@ -34,9 +44,10 @@
                  Grid.Column="1"
                  Margin="1,1,1,1">
                 <ListView x:Name="AppointmentList"
-                   ItemsSource="{Binding Appointments}"
-                   SelectedItem="{Binding SelectedAppointment}"
-                   SelectedIndex="{Binding SelectedAppointmentIndex}" Height="347">
+                          Background="Transparent"
+                          ItemsSource="{Binding Appointments}"
+                          SelectedItem="{Binding SelectedAppointment}"
+                          SelectedIndex="{Binding SelectedAppointmentIndex}" Height="347">
 
                     <ListView.View>
                         <GridView>

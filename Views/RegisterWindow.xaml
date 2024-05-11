@@ -24,6 +24,14 @@
 
             </Grid.RowDefinitions>
 
+
+            <StackPanel Grid.RowSpan="3"
+                        Grid.ColumnSpan="3" Opacity="0.5">
+                <Image Source="/Image/login2.jpg" />
+
+                
+            </StackPanel>
+
             <StackPanel Orientation="Vertical"
                     Margin="10"
                     Grid.Row="1"

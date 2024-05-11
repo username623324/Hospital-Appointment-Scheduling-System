@@ -28,9 +28,9 @@
 
             <StackPanel Grid.RowSpan="3"
                         Grid.ColumnSpan="3">
-                <Image Source="/Image/back.jpg" Height="445" Stretch="Fill"/>
+                <Image Source="/Image/back.jpg" Height="450" Stretch="Fill"/>
 
-                
+
             </StackPanel>
 
             <StackPanel Grid.RowSpan="2"
@@ -61,11 +61,11 @@
                         Background="#333333" Opacity="0.5"/>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
 
-                <Image Source="/Image/logonew.png" 
-                       Margin="3"
-                       Height="50"/>
+                <Image Source="/Image/background.png" 
+                       Height="45" 
+                       Margin="10,0,0,0 "/>
                 <TextBlock FontWeight="Bold"
-                           Foreground="White" FontFamily="Rockwell Condensed"
+                           Foreground="White" FontFamily="Arial Rounded MT Bold"
                            VerticalAlignment="Center"
                            >
                     A <LineBreak/>
@@ -122,7 +122,7 @@
                 <TextBlock Text="{Binding LoggedInPatient.PatientName, StringFormat=Welcome {0:C}}"
                            Foreground="White"
                            VerticalAlignment="Center"
-                           Margin="0,0,5,10"/>
+                           Margin="0,0,5,15"/>
 
                 <Ellipse Height="50" 
                          Width="50"
@@ -134,6 +134,7 @@
 
             </StackPanel>
 
+           
             <Button Content="Log Out"
                     Cursor="Hand"
                     CommandParameter="{x:Reference Name=patienthomepage}"

@@ -20,6 +20,24 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.Column="1"
+               Content="Search Appointments"
+               FontSize="25"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontWeight="Bold"/>
+
+
+        <StackPanel Grid.Column="1"
+            Grid.Row="1"
+            Margin="0,100,0,0"
+            Opacity="0.5">
+
+            <Image Source="/Image/background.png" Height="192" Width="298" />
+
+
+        </StackPanel>
+
 
 
 
@@ -52,6 +70,7 @@
 
 
             <ListView Name="AppointmentList"
+                      Background="Transparent"
               ItemsSource="{Binding Appointments}"
               SelectedItem="{Binding SelectedAppointment}"
               SelectedIndex="{Binding SelectedAppointmentIndex}" Height="294">
@@ -65,10 +84,13 @@
                                         Width="40"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Date}"
                                         Header="Date"
-                                        Width="200"/>
+                                        Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Time}"
+                                        Header="Time"
+                                        Width="120"/>
                         <GridViewColumn DisplayMemberBinding="{Binding DoctorAssigned.Name}"
                                         Header="Doctor"
-                                        Width="150"/>
+                                        Width="120"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Condition}"
                                         Header="Status"
                                         Width="100"/>
