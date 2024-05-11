@@ -40,7 +40,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
                 _selectedAppointment = value; 
                 if (value == null) 
                 { 
-                    ButtonCommand = false;
+                    ButtonCommand = false;//if the patients appointment is empty it wil disable the button to prevent an error in the code
                 }
                 else
                     ButtonCommand = true;
@@ -58,7 +58,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         public PatientViewTheirAppointmentViewModel(Patient patient)
         {
-            Appointments = AppointmentManagement.GetPatientAppointments(patient);
+            Appointments = AppointmentManagement.GetPatientAppointments(patient);//returns the appointments of patients
             Patient = patient;
             CancelAppointmentCommand = new RelayCommand(CancelAppointment, (s)=>true);
         }
@@ -66,7 +66,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         private void CancelAppointment(object obj)
         {
 
-            AppointmentManagement.CancelAppointment(SelectedAppointment);
+            AppointmentManagement.CancelAppointment(SelectedAppointment);//cancels the appointment
 
         }
     }

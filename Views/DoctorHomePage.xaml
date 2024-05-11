@@ -119,8 +119,9 @@
 
                 <TextBlock Text="{Binding LoggedInDoctor.Name, StringFormat=Welcome {0:C}}"
                            Foreground="White"
+                           FontSize="11"
                            VerticalAlignment="Center"
-                           Margin=" 0,0,5,10"/>
+                           Margin=" 0,0,5,15"/>
                 <Ellipse Height="50" 
                          Width="50"
                          Margin="2">

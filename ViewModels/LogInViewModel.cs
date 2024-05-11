@@ -34,7 +34,6 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         private void Register(object obj)
         {
             
-
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             registerWindow.Show();
@@ -48,7 +47,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             
             bool returned = false;
             bool IsAPatient = false;
-            for(int i = 0; i<DoctorManagement.DoctorDataBase.Count; i++)
+            for(int i = 0; i<DoctorManagement.DoctorDataBase.Count; i++)//searches if it is in Doctordatabase
             {
                 if(UserName == DoctorManagement.DoctorDataBase[i].Name && Convert.ToInt32(Id) == DoctorManagement.DoctorDataBase[i].Id) 
                 {
@@ -68,11 +67,11 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
                 }
             }
 
-            if(returned == true)
+            if(returned == true)//if it returns true then the credentials is on the database
             {
                 
 
-                if (IsAPatient == true)
+                if (IsAPatient == true)//if IsAPatient is true then the inputted credentials is a patient
                 {
                     
                     PatientHomePage patientHomePage = new PatientHomePage(Patient);
@@ -81,7 +80,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
                     
                     
                 }
-                else
+                else//if IsAPatient is false then it's a doctor
                 {
                     
                     DoctorHomePage doctorHomePage = new DoctorHomePage(Doctor);

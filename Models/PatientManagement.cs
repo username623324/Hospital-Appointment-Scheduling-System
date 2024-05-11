@@ -26,7 +26,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             faker.Random = new Randomizer(123);
             for (int i = 0; i < 100; i++)
             {
-                string name = faker.Name.FullName();
+                string name = faker.Name.FirstName();
                 string number = faker.Phone.PhoneNumber();
 
                 var fakes = new Patient(i+1, name, number, medical);

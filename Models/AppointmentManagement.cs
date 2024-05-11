@@ -50,7 +50,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             return AppointmentDataBase; 
         }
 
-        public static ObservableCollection<Appointment> GetScheduledAppointments()
+        public static ObservableCollection<Appointment> GetScheduledAppointments()//finds all taken appointments in the database
         {
 
             foreach(Appointment appointment in AppointmentDataBase)
@@ -69,7 +69,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         {
             int x = 0;
             GetAppointments();
-            foreach(Doctor doctor in DoctorManagement.DoctorDataBase)
+            foreach(Doctor doctor in DoctorManagement.DoctorDataBase)//assigning 5 pre generated appointments to doctors
             {
                 for(int i = 0; i < 5; i++)
                 {
@@ -90,9 +90,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
            foreach(Appointment appointment in AppointmentDataBase)
            {
-                if(appointment.Patient == patient)
+                if(appointment.Patient == patient)//finds all of the appointment's patient that equals to the logged in patient
                 {
-                    if(!PatientAppointmentDataBase.Contains(appointment))
+                    if(!PatientAppointmentDataBase.Contains(appointment))//if it is already on the database it wont add(so that it stops duplicating if the user closes and reopens the window)
                     PatientAppointmentDataBase.Add(appointment);
                 }
 
@@ -104,7 +104,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public static ObservableCollection<Appointment> GetAssignedDoctorAppointments()
         {
-            foreach(Appointment appointment in AppointmentDataBase)
+            foreach(Appointment appointment in AppointmentDataBase)//finds all appointments that has a doctor assigned to them
             {
                 if(appointment.DoctorAssigned.Name != null)
                 {
@@ -119,9 +119,9 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public static void AddAppointment(Appointment appointment, Patient patient)
         {
-            if(appointment.Patient != patient)
+            if(appointment.Patient != patient)//checks if the appointment's patient is already assigned to the logged in patient
             {
-                if (appointment.Condition != AvailableOrNot.Taken)
+                if (appointment.Condition != AvailableOrNot.Taken)//checks if it is taken
                 {
                     appointment.Patient = patient;
                     PatientAppointmentDataBase.Add(appointment);
@@ -140,7 +140,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                     MessageBox.Show(message, caption, button, icon);
                 }
             }
-            else
+            else//returns when the appointment's patient is already the logged in patient
             {
                 string message = "Appointment already added!";
                 string caption = "Information";
@@ -157,15 +157,39 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public static void CancelAppointment(Appointment appointment)
         {
+            if(appointment.Status != Status.Free)
+            {
+                if (appointment.Status != Status.Cancelled)
+                {
+                    appointment.Status = Status.Cancelled;//??not final
+                    appointment.Condition = AvailableOrNot.Available;
+                    appointment.Patient = new Patient();
+                    PatientAppointmentDataBase.Remove(appointment);
+                    string message = "Appointment cancelled";
+                    string caption = "Information";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Information;
+                    MessageBox.Show(message, caption, button, icon);
+                }
+                else
+                {
+                    string message = "Appointment already cancelled!";
+                    string caption = "Information";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Information;
+                    MessageBox.Show(message, caption, button, icon);
+                }
+            }
+            else 
+            {
+                string message = "No appointment!";
+                string caption = "Information";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+                MessageBox.Show(message, caption, button, icon);
+            }
             
-            appointment.Status = Status.Cancelled;//??not final
-            appointment.Condition = AvailableOrNot.Available;
-            PatientAppointmentDataBase.Remove(appointment);
-            string message = "Appointment cancelled";
-            string caption = "Information";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Information;
-            MessageBox.Show(message, caption, button, icon);
+            
         }
     }
 }

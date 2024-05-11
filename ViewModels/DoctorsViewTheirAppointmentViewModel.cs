@@ -7,13 +7,13 @@ using Hospital_Appointment_Scheduling_System.Models;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    public class DoctorsViewTheirAppointmentViewModel
+    public class DoctorsViewTheirAppointmentViewModel: PatientViewTheirAppointmentViewModel
     {
         public Doctor Doctor { get; set; }
         public List<Appointment> Appointments { get; set; }
+       
 
-
-        public DoctorsViewTheirAppointmentViewModel(Doctor doctor)
+        public DoctorsViewTheirAppointmentViewModel(Doctor doctor): base(null)
         {
             Doctor = doctor;
             Appointments = doctor.Appointments;

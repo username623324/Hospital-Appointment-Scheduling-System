@@ -15,10 +15,10 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
     public class DoctorHomePageViewModel: NotifyPropertyChanged
     {
         public Doctor LoggedInDoctor { get; set; }
-        public ICommand LogOutCommand { get; set; }
-        public ICommand ViewMyAppointmentCommand { get; set; }
+        public ICommand LogOutCommand { get; set; }//logs out
+        public ICommand ViewMyAppointmentCommand { get; set; }//views the doctor's appointment
         public ICommand ViewScheduledAppointmentCommand { get; set; }
-        public ICommand ShowPatientsCommand { get; set; }
+        public ICommand ShowPatientsCommand { get; set; }//shows the list of patients
 
         public DoctorHomePageViewModel(Doctor loggedInDoctor)
         {

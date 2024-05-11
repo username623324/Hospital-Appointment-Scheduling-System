@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    public class AvailableAppointmentPViewModel: NotifyPropertyChanged
+    public class AvailableAppointmentPViewModel: NotifyPropertyChanged//shows the appointments of the doctor
     {
         public Patient LoggedInPatient { get; set; }
         public Doctor Doctor { get; set; }

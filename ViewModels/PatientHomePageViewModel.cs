@@ -15,10 +15,10 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
     public class PatientHomePageViewModel: NotifyPropertyChanged
     {  
         public Patient LoggedInPatient { get; set; }
-        public ICommand ViewMyAppointmentCommand { get; set; }
-        public ICommand LogOutCommand { get; set; }
-        public ICommand ShowDoctorCommand { get; set; }
-        public ICommand ShowSearchAppointmentCommand { get; set; }
+        public ICommand ViewMyAppointmentCommand { get; set; }//views the appointments of the patients
+        public ICommand LogOutCommand { get; set; }//logout
+        public ICommand ShowDoctorCommand { get; set; }//shows the doctor lists
+        public ICommand ShowSearchAppointmentCommand { get; set; }//shows all the appointments with assigned doctors in the database
      
 
         public PatientHomePageViewModel(Patient loggedInPatient)
@@ -50,7 +50,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             LogInWindow logInWindow = new LogInWindow();
             logInWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             logInWindow.Show();
-            
+            AppointmentManagement.PatientAppointmentDataBase.Clear();//clears the patientappointmentdatabase so that if another user logs in they will only see their appointments
             var window = obj as Window;
             window.Close();
 

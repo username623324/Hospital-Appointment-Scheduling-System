@@ -46,10 +46,16 @@
                         Margin="0,0,10,0">
 
                 <Button Content="Add History"
+                        Style="{DynamicResource RoundedButton}"
+                        Background="Black"
+                        Foreground="White"
                         Height="28"
                         Margin=" 0,0,10,0"
                         Command="{Binding AddHistoryCommand}"/>
                 <Button Content="Done" 
+                        Style="{DynamicResource RoundedButton}"
+                        Background="Black"
+                        Foreground="White"
                         CommandParameter="{x:Reference Name= editpatientwindow}" 
                         Command="{Binding SavePatientInfoCommand}"  
                         Height="28" 

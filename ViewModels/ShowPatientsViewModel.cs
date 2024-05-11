@@ -18,7 +18,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         public Doctor LoggedInDoctor { get; set; }
         private Patient _selectedPatient;
         private int _selectedPatientIndex;
-        private List<string> _searchOptions = new List<string>() { "Name", "ID" };
+        private List<string> _searchOptions = new List<string>() { "Name", "ID" };//combobox item
         private string _selectedOption = "Name";
         public ICommand EditPatientInfoCommand { get; set; }
        

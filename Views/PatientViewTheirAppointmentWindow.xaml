@@ -77,6 +77,9 @@
 
             <Button Grid.Row="2"
                  Grid.Column="1"
+                    Style="{DynamicResource RoundedButton}"
+                    Background="Black"
+                    Foreground="White"
                  Content="Cancel Appointment"
                  Height="30"
                  Width="120"

@@ -38,13 +38,10 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         private void AddCredentials(object obj)
         {
             
-            Patient patient = new Patient();
-            patient.PatientName = Name;
-            patient.PatientContactNumber = ContactNumber;
-            patient.Id = PatientManagement.PatientDataBase.Count() + 100;
+            Patient patient = new Patient(PatientManagement.PatientDataBase.Count()+100, this.Name, this.ContactNumber, new List<string>());
             PatientManagement.AddPatient(patient);
 
-            PatientHomePage patientHomePage = new PatientHomePage(patient);
+            PatientHomePage patientHomePage = new PatientHomePage(patient);//after registering it will redirect it to patient home page
             patientHomePage.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             patientHomePage.Show();
 

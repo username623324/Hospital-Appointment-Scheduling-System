@@ -80,6 +80,9 @@
             </StackPanel>
 
             <Button Grid.Row="2"
+                    Style="{DynamicResource RoundedButton}"
+                    Background="Black"
+                    Foreground="White"
                     Grid.Column="1"
                     Content="Add Appointment"
                     Height="30"

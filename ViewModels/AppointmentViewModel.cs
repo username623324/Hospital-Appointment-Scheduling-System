@@ -13,7 +13,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
     public class AppointmentViewModel: NotifyPropertyChanged
     {
         public ObservableCollection<Appointment> Appointments { get; set; }
-        private List<string> _searchOptions = new List<string>() { "Doctor", "Patient"};
+        private List<string> _searchOptions = new List<string>() { "Doctor", "Patient"};//combobox item
         private string _selectedOption = "Patient";
 
         public List<string> SearchOptions

@@ -91,6 +91,9 @@
 
 
         <Button Grid.Column="1"
+                Style="{DynamicResource RoundedButton}"
+                Background="black"
+                Foreground="white"
         Grid.Row="2"
         Height="30"
         Width="80"

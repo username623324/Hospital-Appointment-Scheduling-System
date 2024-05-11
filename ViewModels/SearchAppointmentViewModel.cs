@@ -16,7 +16,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         public ObservableCollection<Appointment> Appointments { get; set; }
         private List<string> _searchOptions = new List<string>() { "Doctor", "ID" };
         private string _selectedOption = "Doctor";
-
+       
         public List<string> SearchOptions
         {
             get { return _searchOptions; }
@@ -35,11 +35,12 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         public SearchAppointmentViewModel(Patient patient): base(patient, null)
         {
-            Appointments = AppointmentManagement.GetAssignedDoctorAppointments();
+            LoggedInPatient = patient;
+            Appointments = AppointmentManagement.GetAssignedDoctorAppointments();//returns the appointment with assigned doctors
         }
 
 
-       
+ 
 
     }
 }

@@ -17,7 +17,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         public Patient LoggedInPatient { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
-        private List<string> _searchOptions = new List<string>() { "Name", "Specialization" };
+        private List<string> _searchOptions = new List<string>() { "Name", "Specialization" };//combobox item
         private string _selectedOption = "Name";
         private Doctor _selectedDoctor;
         private int _selectedDoctorIndex;

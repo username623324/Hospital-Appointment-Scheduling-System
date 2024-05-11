@@ -75,6 +75,10 @@
             </StackPanel>
 
             <Button Grid.Row="2"
+                    Style="{DynamicResource RoundedButton}"
+                    Background="Black"
+                    Foreground="White"
+                    
              Grid.Column="1"
              Content="Cancel Appointment"
              Height="30"

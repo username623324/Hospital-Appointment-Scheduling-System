@@ -9,7 +9,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
 {
     public enum Status
     {
-        Upcoming, Ongoing, Completed, Cancelled
+        Upcoming, Ongoing, Completed, Cancelled, Free
     }
 
     public enum AvailableOrNot
@@ -24,7 +24,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         private Doctor? _doctorAssigned;
         public DateOnly? Date {  get; set; }
         public TimeOnly? Time { get; set; }
-        private Status? _status;
+        private Status? _status = Models.Status.Free;
         private AvailableOrNot _condition;
 
 
@@ -45,7 +45,11 @@ namespace Hospital_Appointment_Scheduling_System.Models
                         Status = Models.Status.Upcoming;
                     }
                     else
+                    {
                         Status = Models.Status.Completed;
+                        Condition = AvailableOrNot.Available;
+                    }
+                        
                     
                 }
                 else
