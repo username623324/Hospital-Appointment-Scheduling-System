@@ -30,11 +30,7 @@
     <Resource Include="Image\back.jpg" />
     <Resource Include="Image\background.png" />
     <Resource Include="Image\login2.jpg" />
-    <Resource Include="Image\loginwindow.png" />
-    <Resource Include="Image\logonew.png" />
     <Resource Include="Image\Profile.png" />
-    <Resource Include="Image\Screenshot 2024-05-01 123755.png" />
-    <Resource Include="Image\tf2medicpng.png" />
     <Content Include="Image\video.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
