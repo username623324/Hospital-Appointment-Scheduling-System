@@ -11,23 +11,11 @@ namespace Hospital_Appointment_Scheduling_System.Models
 {
     public class AppointmentManagement
     {
-        public static ObservableCollection<Appointment> AppointmentDataBase { get; set; } = new ObservableCollection<Appointment>()
-        {
-
-
-        };
-
-        public static ObservableCollection<Appointment> PatientAppointmentDataBase { get; set; } = new ObservableCollection<Appointment>()
-        {
-
-
-        };
-
-        public static ObservableCollection<Appointment> ScheduledAppointmentDataBase { get; set; } = new ObservableCollection<Appointment>()
-        {
-
-        };
-        public static ObservableCollection<Appointment> AssignedDoctorAppointments {  get; set; } = new ObservableCollection<Appointment>() {  };
+        public static ObservableCollection<Appointment> AppointmentDataBase { get; set; } = new ObservableCollection<Appointment>(){};
+        public static ObservableCollection<Appointment> PatientAppointmentDataBase { get; set; } = new ObservableCollection<Appointment>(){};
+        public static ObservableCollection<Appointment> ScheduledAppointmentDataBase { get; set; } = new ObservableCollection<Appointment>(){};
+        public static ObservableCollection<Appointment> AssignedDoctorAppointments {  get; set; } = new ObservableCollection<Appointment>() {};
+        public static ObservableCollection<Appointment> UnassignedAppointments { get; set; } = new ObservableCollection<Appointment>(){};
 
         public static ObservableCollection<Appointment> GetAppointments()
         {   
@@ -49,6 +37,34 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
             return AppointmentDataBase; 
         }
+
+        public static ObservableCollection<Appointment> GetUnassignedAppointments()
+        {
+            foreach(Appointment appointment in AppointmentDataBase)
+            {
+                if(appointment.DoctorAssigned.Name == null)
+                {   
+                    if(!UnassignedAppointments.Contains(appointment))
+                    UnassignedAppointments.Add(appointment);
+                }
+            }
+            return UnassignedAppointments;
+        }
+
+        public static void AddUnassignedAppointment(Doctor doctor, Appointment appointment)
+        {
+            
+            appointment.DoctorAssigned = doctor;
+            doctor.Appointments.Add(appointment);
+            UnassignedAppointments.Remove(appointment);
+            string message = "Appointment schedule added!";
+            string caption = "Information";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Information;
+            MessageBox.Show(message, caption, button, icon);
+
+        }
+
 
         public static ObservableCollection<Appointment> GetScheduledAppointments()//finds all taken appointments in the database
         {
@@ -159,6 +175,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         {
             if(appointment.Status != Status.Free)
             {
+                
                 if (appointment.Status != Status.Cancelled)
                 {
                     appointment.Status = Status.Cancelled;//??not final
@@ -191,5 +208,32 @@ namespace Hospital_Appointment_Scheduling_System.Models
             
             
         }
+
+
+        public static void RemoveAppointment(Appointment appointment, Doctor doctor)
+        {
+            if(appointment.Patient != null)
+            {
+                appointment.DoctorAssigned = new Doctor();
+                doctor.Appointments.Remove(appointment);
+                UnassignedAppointments.Add(appointment);
+                string message = "Appointment Removed!";
+                string caption = "Information";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+                MessageBox.Show(message, caption, button, icon);
+            }
+            else
+            {
+                string message = "Cant remove appointment, appointment is currently booked";
+                string caption = "Information";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+                MessageBox.Show(message, caption, button, icon);
+            }
+
+        }
+
+
     }
 }

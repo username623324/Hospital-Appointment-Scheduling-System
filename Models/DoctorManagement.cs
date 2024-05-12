@@ -16,7 +16,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Doctor> DoctorDataBase { get; set; } = new ObservableCollection<Doctor>()
         {
             
-            new Doctor(0,"sins", "ass", new List<Appointment>()),
+            new Doctor(0,"sins", "Yap", new List<Appointment>()),
             new Doctor(1, "Samantha", "Anesthesiology", new List<Appointment>()),
             new Doctor(2, "Jonathan", "Cardiology", new List<Appointment>()),
             new Doctor(3, "Roman", "Dermatology", new List<Appointment>()),

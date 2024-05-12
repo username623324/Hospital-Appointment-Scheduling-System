@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
-        Title="ShowPatientsWindow" Height="450" Width="600">
+        ResizeMode="NoResize"
+        Title="ShowPatientsWindow" Height="450" Width="800">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -17,7 +18,7 @@
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
@@ -32,7 +33,7 @@
 
         <StackPanel Grid.Column="1"
             Grid.Row="1"
-            Margin="0,100,0,0"
+            Margin="0,80,0,0"
             Opacity="0.5">
 
             <Image Source="/Image/background.png" Height="192" Width="298" />
@@ -50,13 +51,13 @@
            Content="Search by"/>
                 <ComboBox x:Name="FilterSearchPatient"
               ToolTip="Shows the amount of records per page"
-              Width="100"
+              Width="60"
               ItemsSource="{Binding SearchOptions}"
               SelectedValue="{Binding SelectedOption,
               UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="FilterPatientTextBox"
              TextChanged="FilterTextBoxPatient_TextChanged"
-             Width="337" Height="26"/>
+             Width="178" Height="26"/>
             </StackPanel>
         </StackPanel>
 
@@ -77,14 +78,49 @@
                                         Width="40"/>
                         <GridViewColumn DisplayMemberBinding="{Binding PatientName}"
                                         Header="Name"
-                                        Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding PatientContactNumber}"
-                                        Header="Contact Number"
-                                        Width="264"/>
+                                        Width="256"/>
                     </GridView>
                 </ListView.View>
 
             </ListView>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20">
+
+
+            <Ellipse Height="56" 
+                      Width="58"
+                      Margin="2" RenderTransformOrigin="0.502,0.55">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Image/Profile.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <TextBlock Text="{Binding SelectedPatient.PatientName, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Contact Number"
+                       Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource RoundedTextBox}" 
+                     Text="{Binding SelectedPatient.PatientContactNumber}" 
+                     IsReadOnly="True"
+                     Width="230"/>
+            <TextBlock Text="Medical History"
+                       Margin="10,0,0,0"/>
+            <TextBox Style="{DynamicResource RoundedTextBox}" 
+                     Text="{Binding SelectedPatient.PatientMedicalHistory, 
+                     UpdateSourceTrigger=PropertyChanged}"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Height="150"
+                     Width="230"/>
 
         </StackPanel>
 
@@ -94,14 +130,14 @@
                 Style="{DynamicResource RoundedButton}"
                 Background="black"
                 Foreground="white"
-        Grid.Row="2"
-        Height="30"
-        Width="80"
-        Content="Edit Info"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Top"
-        Margin="10" 
-        Command="{Binding EditPatientInfoCommand}"/>
+                Grid.Row="2"
+                Height="30"
+                Width="80"
+                Content="Edit Info"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="10" 
+                Command="{Binding EditPatientInfoCommand}"/>
 
     </Grid>
 </Window>

@@ -17,15 +17,14 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
     public class EditPatientViewModel: NotifyPropertyChanged
     {   
         public ICommand SavePatientInfoCommand { get; set; }
-        public ICommand AddHistoryCommand { get; set; }
         public Patient Patient { get; set; }
         public int? NewId {  get; set; }
         public string? NewPatientName { get; set; }
         public string? NewContactNumber { get; set; }
-        private List<string>? _patientMedicalHistory;
+        private string? _patientMedicalHistory;
 
 
-        public List<string>? PatientMedicalHistory
+        public string? NewPatientMedicalHistory
         {
             get { return _patientMedicalHistory; }
             set { _patientMedicalHistory = value; OnPropertyChanged("PatientMedicalHistory"); }
@@ -36,25 +35,16 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             Patient = patient;
             NewPatientName = patient.PatientName;
             NewContactNumber = patient.PatientContactNumber;
-            PatientMedicalHistory = patient.PatientMedicalHistory;
-
+            NewPatientMedicalHistory = patient.PatientMedicalHistory;
             SavePatientInfoCommand = new RelayCommand(SavePatientInfo, (s) => true);
-            AddHistoryCommand = new RelayCommand(AddHistory, (s)=> true);
-        }
-
-        private void AddHistory(object obj)
-        {
-            AddMedicalHistoryWindow add = new AddMedicalHistoryWindow(PatientMedicalHistory);//can add but is broken
-            add.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            add.Show();
-
+           
         }
 
         private void SavePatientInfo(object obj)
         {
             Patient.PatientName = NewPatientName;
             Patient.PatientContactNumber = NewContactNumber;
-            Patient.PatientMedicalHistory = PatientMedicalHistory;
+            Patient.PatientMedicalHistory = NewPatientMedicalHistory;
 
             var editPatientDWindow = obj as Window;
             editPatientDWindow.Close(); 

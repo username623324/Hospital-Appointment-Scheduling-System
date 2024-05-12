@@ -37,7 +37,6 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             registerWindow.Show();
-
             var logInWindow = obj as Window;
             logInWindow.Close();
         }

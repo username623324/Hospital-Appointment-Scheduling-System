@@ -14,8 +14,9 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
     public class RegisterViewModel
     {
-        public string Name { get; set; }
-        public string ContactNumber { get; set; }
+        public string? Name { get; set; }
+        public string? ContactNumber { get; set; }
+        public string? MedicalHistory { get; set; }
         public ICommand AddCredentialsCommand {  get; set; }
         public ICommand CancelCommand { get; set; }
         public RegisterViewModel()
@@ -38,7 +39,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         private void AddCredentials(object obj)
         {
             
-            Patient patient = new Patient(PatientManagement.PatientDataBase.Count()+100, this.Name, this.ContactNumber, new List<string>());
+            Patient patient = new Patient(PatientManagement.PatientDataBase.Count()+100, this.Name, this.ContactNumber, this.MedicalHistory);
             PatientManagement.AddPatient(patient);
 
             PatientHomePage patientHomePage = new PatientHomePage(patient);//after registering it will redirect it to patient home page

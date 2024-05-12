@@ -9,12 +9,12 @@ using System.Windows.Input;
 
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    public class AddPatientViewModel
+    public class AddPatientViewModel//unused
     {   
         public ICommand AddPatientCommand { get; set; }
-        public string Name { get; set; }
-        public string ContactNumber { get; set; }
-        public List<string> MedicalHistory { get; set; }
+        public string? Name { get; set; }
+        public string? ContactNumber { get; set; }
+        public string? MedicalHistory { get; set; }
 
         public AddPatientViewModel()
         {

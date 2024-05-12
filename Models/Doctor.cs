@@ -17,7 +17,8 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public List<Appointment>? Appointments
         {
             get { return _appointments; }
-            set { _appointments = value; OnPropertyChanged("Appointments"); }
+            set { _appointments = value; 
+                OnPropertyChanged("Appointments"); }
         }
 
         public Doctor(int? id, string? name, string? specialization, List<Appointment>? appointments)
@@ -32,5 +33,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         { 
 
         }
+
+        
     }
 }

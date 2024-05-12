@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
         Name="patienthomepage"
+        ResizeMode="NoResize"
         Title="PatientHomePage" Height="465" Width="800">
 
     <Border Background="White">
@@ -36,24 +37,18 @@
             <StackPanel Grid.RowSpan="2"
                         Grid.ColumnSpan="3">
 
-                <MediaElement Name="myMediaElement" >
-                    <MediaElement.Triggers>
-                        <EventTrigger RoutedEvent="MediaElement.Loaded">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
 
-                                        <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play
-                                              over and over indefinitely. thank u stackoverflow-->
-                                        <MediaTimeline Source="E:\visuallllllll\hospi\Image\video.mp4" Storyboard.TargetName="myMediaElement" RepeatBehavior="Forever" />
+                <!-- if the video wont play in app, open the image folder and
+                     click on video.mp4 then on properties look for Misc and copy the
+                     full path to the "Source"-->
 
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                    </MediaElement.Triggers>
-                </MediaElement>
-
+                <MediaElement x:Name="backgroundVideo"  
+                              Source="C:\Users\Jam\source\repos\Hospital-Appointment-Scheduling-System\Image\video.mp4" 
+                              LoadedBehavior="Manual" 
+                              Loaded="backgroundVideo_Loaded" 
+                              MediaEnded="backgroundVideo_MediaEnded" 
+                              VerticalAlignment="Bottom" HorizontalAlignment="Center" 
+                              Canvas.Top="40"/>
             </StackPanel>
 
 

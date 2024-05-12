@@ -15,7 +15,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public int? Id { get; set; }
         private string? _patientName;
         private string? _patientContactNumber;
-        private List<string>? _patientMedicalHistory;
+        private string? _patientMedicalHistory;
 
       
         public string? PatientName
@@ -34,7 +34,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             }
         }
 
-        public List<string>? PatientMedicalHistory
+        public string? PatientMedicalHistory
         {
             get { return _patientMedicalHistory; }
             set { _patientMedicalHistory = value;
@@ -42,7 +42,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
             }
         }
 
-        public Patient(int? id, string? patientName, string? patientContactNumber, List<string>? patientMedicalHistory)
+        public Patient(int? id, string? patientName, string? patientContactNumber, string? patientMedicalHistory)
         {
             Id = id;
             PatientName = patientName;

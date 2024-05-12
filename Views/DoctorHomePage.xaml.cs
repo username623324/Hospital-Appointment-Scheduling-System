@@ -28,5 +28,17 @@ namespace Hospital_Appointment_Scheduling_System.Views
             this.DataContext = doctorHomePageVM;
         }
 
+
+        //code-behind that loops the video
+        private void backgroundVideo_Loaded(object sender, RoutedEventArgs e)
+        {
+            backgroundVideo.Play();
+        }
+
+        private void backgroundVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            backgroundVideo.Position = TimeSpan.FromSeconds(0);
+        }
+
     }
 }

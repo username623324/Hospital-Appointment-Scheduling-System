@@ -6,64 +6,50 @@
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         Name ="editpatientwindow"
         mc:Ignorable="d"
-        Title="EditPatientDWindow" Height="450" Width="400">
+        ResizeMode="NoResize"
+        Title="EditPatientDWindow" Height="450" Width="450">
     <Border>
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="340"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="325"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel HorizontalAlignment="Left" Width="249" Margin="60,0,0,10" Grid.Row="1">
+            <Label Content="Edit Info"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="25"
+                   FontWeight="Bold"/>
+
+            <StackPanel HorizontalAlignment="Center" Width="249" Grid.Row="1">
                 <TextBlock Text="Name"/>
-                <TextBox Text="{Binding NewPatientName}"/>
+                <TextBox Style="{DynamicResource RoundedTextBox}" 
+                         Text="{Binding NewPatientName}"/>
                 <TextBlock Text="Contact Number"/>
-                <TextBox Text="{Binding NewContactNumber}"/>
-                <ListView Name="MedicalHistory"
-                          Margin="0,5,0,0"
-                          ItemsSource="{Binding PatientMedicalHistory}"
-                          SelectedItem="{Binding SelectedString}"
-                          SelectedIndex="{Binding SelectedStringIndex}"
-                          Height="254">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn
-                               
-                             Header="Medical History" Width="250"/>
-                        </GridView>
-                    </ListView.View>
-
-                </ListView>
+                <TextBox Style="{DynamicResource RoundedTextBox}" 
+                         Text="{Binding NewContactNumber}"/>
+                <TextBlock Text="Medical History"/>
+                <TextBox Style="{DynamicResource RoundedTextBox}" 
+                         Text="{Binding NewPatientMedicalHistory}"
+                         TextWrapping="Wrap"
+                         Height="200"/>
 
             </StackPanel>
 
-            <StackPanel Grid.Row="2" 
-                        Orientation="Horizontal"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Right"
-                        Margin="0,0,10,0">
-
-                <Button Content="Add History"
-                        Style="{DynamicResource RoundedButton}"
-                        Background="Black"
-                        Foreground="White"
-                        Height="28"
-                        Margin=" 0,0,10,0"
-                        Command="{Binding AddHistoryCommand}"/>
-                <Button Content="Done" 
-                        Style="{DynamicResource RoundedButton}"
-                        Background="Black"
-                        Foreground="White"
-                        CommandParameter="{x:Reference Name= editpatientwindow}" 
-                        Command="{Binding SavePatientInfoCommand}"  
-                        Height="28" 
-                        Width="73" 
-                        Grid.Row="2"/>
-
-
-            </StackPanel>
+            <Button Content="Done" 
+                    Style="{DynamicResource RoundedButton}"
+                    Background="Black"
+                    Foreground="White"
+                    CommandParameter="{x:Reference Name= editpatientwindow}" 
+                    Command="{Binding SavePatientInfoCommand}"  
+                    Height="28" 
+                    Width="73"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,15,0"
+                    Grid.Row="2"/>
             
         </Grid>
         

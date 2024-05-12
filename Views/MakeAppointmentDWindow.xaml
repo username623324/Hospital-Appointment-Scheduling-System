@@ -1,0 +1,108 @@
+﻿<Window x:Class="Hospital_Appointment_Scheduling_System.Views.MakeAppointmentDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
+        mc:Ignorable="d"
+        Title="MakeAppointmentDWindow" Height="450" Width="600">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+
+        </Grid.RowDefinitions>
+
+        <Label Content="Free Appointment Slots"
+               Grid.Column="1"
+               VerticalAlignment="Center"
+               HorizontalContentAlignment="Center"
+               FontSize="25"
+               FontWeight="Bold"/>
+
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Height="25"
+                       Content="Search ID"/>
+                <TextBox x:Name="FilterAppointmentTextBox"
+                         TextChanged="FilterTextBoxAppointment_TextChanged"
+                         Width="50" Height="26"/>
+                <Label Content="Search by Date"
+                       Margin="15,0,0,0"/>
+                <DatePicker x:Name="FilterDatePicked"
+                    DatePicker.SelectedDateChanged="FilterDate_ListChange"
+                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
+
+            </StackPanel>
+        </StackPanel>
+        
+        
+        <Image Source="/Image/background.png"
+               Grid.Column="1"
+               Grid.Row="1" 
+               Margin="69,93,95,57"
+               Opacity="0.5"/>
+
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1" Margin="0,30,0,0">
+
+
+            <ListView Name="AppointmentList"
+                      Background="Transparent"
+                      ItemsSource="{Binding UnassignedAppointments}"
+                      SelectedItem="{Binding SelectedAppointment}"
+                      SelectedIndex="{Binding SelectedAppointmentIndex}" Height="294">
+
+
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}"
+                                Header="ID"
+                                Width="40"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Date}"
+                                Header="Date"
+                                Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Time}"
+                                Header="Time"
+                                Width="255"/>
+                
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+        </StackPanel>
+
+        <Button Content="Add Appointment"
+                Command="{Binding AddAppointmentCommand}"
+                Style="{DynamicResource RoundedButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0,4,10,0"
+                Height="30"
+                Width="125"
+                Background="Black"
+                Foreground="White"
+                Grid.Column="1"
+                Grid.Row="2"/>
+
+
+    </Grid>
+</Window>

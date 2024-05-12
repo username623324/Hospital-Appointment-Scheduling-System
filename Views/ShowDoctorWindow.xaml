@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="ShowDoctorWindow" Height="450" Width="600">
     <Grid>
 

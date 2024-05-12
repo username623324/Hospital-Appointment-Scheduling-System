@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Hospital_Appointment_Scheduling_System.Views"
         mc:Ignorable="d"
         Name ="registerpage"
+        ResizeMode="NoResize"
         Title="RegisterWindow" Height="450" Width="400">
     
     <Border Background="White">

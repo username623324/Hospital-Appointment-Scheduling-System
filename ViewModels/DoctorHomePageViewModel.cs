@@ -46,6 +46,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         private void LogOut(object obj)
         {
+            AppointmentManagement.UnassignedAppointments.Clear();
             LogInWindow login = new LogInWindow();
             login.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             login.Show();
