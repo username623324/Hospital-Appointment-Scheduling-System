@@ -46,6 +46,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 {   
                     if(!UnassignedAppointments.Contains(appointment))//if already on the databse then dont add
                     UnassignedAppointments.Add(appointment);
+                    
                 }
             }
             return UnassignedAppointments;
@@ -223,7 +224,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBox.Show(message, caption, button, icon);
             }
-            else//if the appointment is booked by a patient the doctor wont be able to delete the appointment
+            else//if the appointment is booked by a patient, the doctor wont be able to delete the appointment
             {
                 string message = "Cant remove appointment, appointment is currently booked";
                 string caption = "Information";
