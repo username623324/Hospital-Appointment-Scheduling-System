@@ -33,7 +33,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             makeAppointmentDWindow.Show();
         }
 
-        private void RemoveAppointment(object obj)
+        private void RemoveAppointment(object obj)//removes a scheduled appointment slot
         {
             AppointmentManagement.RemoveAppointment(SelectedAppointment, LoggedInDoctor);
 

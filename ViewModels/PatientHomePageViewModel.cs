@@ -44,20 +44,20 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             showDoctorWindow.Show();
         }
 
-        private void LogOut(object obj)
+        private void LogOut(object obj)//log out
         {
 
             LogInWindow logInWindow = new LogInWindow();
             logInWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             logInWindow.Show();
-            AppointmentManagement.PatientAppointmentDataBase.Clear();//clears the patientappointmentdatabase so that if another user logs in they will only see their appointments
+            AppointmentManagement.PatientAppointmentDataBase.Clear();//clears the patientappointmentdatabase so that if another user logs in it will reset and it will only show that logged in patient's appointments
             var window = obj as Window;
             window.Close();
 
             
         }
 
-        private void ViewMyAppointment(object obj)
+        private void ViewMyAppointment(object obj)//views the patient's appointment
         {
             PatientViewTheirAppointmentWindow pvtaw = new PatientViewTheirAppointmentWindow(LoggedInPatient);
             pvtaw.WindowStartupLocation = WindowStartupLocation.CenterScreen;

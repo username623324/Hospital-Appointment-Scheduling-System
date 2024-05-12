@@ -30,23 +30,23 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         }
 
-        private void ShowPatients(object obj)
+        private void ShowPatients(object obj)//show patient command
         {
             ShowPatientsWindow showPatientsWindow = new ShowPatientsWindow(LoggedInDoctor);
             showPatientsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             showPatientsWindow.Show();
         }
 
-        private void ViewScheduledAppointment(object obj)
+        private void ViewScheduledAppointment(object obj)//view all scheduled appointments in the database
         {
             AppointmentWindow apwindow = new AppointmentWindow();
             apwindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             apwindow.Show();
         }
 
-        private void LogOut(object obj)
+        private void LogOut(object obj)//logs out
         {
-            AppointmentManagement.UnassignedAppointments.Clear();
+            
             LogInWindow login = new LogInWindow();
             login.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             login.Show();
@@ -54,7 +54,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
             dochome.Close();
         }
 
-        private void ViewMyAppointment(object obj)
+        private void ViewMyAppointment(object obj)//views the doctor's own appointment schedule
         {
             DoctorsViewTheirAppointmentWindow doctorsViewTheirAppointmentWindow = new DoctorsViewTheirAppointmentWindow(LoggedInDoctor);
             doctorsViewTheirAppointmentWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;

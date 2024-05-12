@@ -42,7 +42,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
         private void AddAppointment(object obj)
         {
                   
-            AppointmentManagement.AddAppointment(SelectedAppointment, LoggedInPatient);
+            AppointmentManagement.AddAppointment(SelectedAppointment, LoggedInPatient);//books an appointment for patient
 
         }
     }

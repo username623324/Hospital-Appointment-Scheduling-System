@@ -14,7 +14,7 @@ using Hospital_Appointment_Scheduling_System.Models;
 using Hospital_Appointment_Scheduling_System.Views;
 namespace Hospital_Appointment_Scheduling_System.ViewModels
 {
-    public class EditPatientViewModel: NotifyPropertyChanged
+    public class EditPatientViewModel: NotifyPropertyChanged//For editing a patients' information
     {   
         public ICommand SavePatientInfoCommand { get; set; }
         public Patient Patient { get; set; }

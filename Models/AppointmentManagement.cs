@@ -17,7 +17,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         public static ObservableCollection<Appointment> AssignedDoctorAppointments {  get; set; } = new ObservableCollection<Appointment>() {};
         public static ObservableCollection<Appointment> UnassignedAppointments { get; set; } = new ObservableCollection<Appointment>(){};
 
-        public static ObservableCollection<Appointment> GetAppointments()
+        public static ObservableCollection<Appointment> GetAppointments()//bogus
         {   
             Doctor emptydoctor = new Doctor();
             Patient emptypatient = new Patient();
@@ -38,20 +38,20 @@ namespace Hospital_Appointment_Scheduling_System.Models
             return AppointmentDataBase; 
         }
 
-        public static ObservableCollection<Appointment> GetUnassignedAppointments()
+        public static ObservableCollection<Appointment> GetUnassignedAppointments()//finds all of the unassigned appointments
         {
             foreach(Appointment appointment in AppointmentDataBase)
             {
                 if(appointment.DoctorAssigned.Name == null)
                 {   
-                    if(!UnassignedAppointments.Contains(appointment))
+                    if(!UnassignedAppointments.Contains(appointment))//if already on the databse then dont add
                     UnassignedAppointments.Add(appointment);
                 }
             }
             return UnassignedAppointments;
         }
 
-        public static void AddUnassignedAppointment(Doctor doctor, Appointment appointment)
+        public static void AddUnassignedAppointment(Doctor doctor, Appointment appointment)//when a doctor adds a scheduled appointment
         {
             
             appointment.DoctorAssigned = doctor;
@@ -173,12 +173,12 @@ namespace Hospital_Appointment_Scheduling_System.Models
 
         public static void CancelAppointment(Appointment appointment)
         {
-            if(appointment.Status != Status.Free)
+            if(appointment.Status != Status.Free)//if the appointment is free meaning there is no appointment so doesnt make sense if you cancel a free appointment
             {
                 
-                if (appointment.Status != Status.Cancelled)
+                if (appointment.Status != Status.Cancelled)//if it is already cancelled it will ignore this
                 {
-                    appointment.Status = Status.Cancelled;//??not final
+                    appointment.Status = Status.Cancelled;
                     appointment.Condition = AvailableOrNot.Available;
                     appointment.Patient = new Patient();
                     PatientAppointmentDataBase.Remove(appointment);
@@ -188,7 +188,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                     MessageBoxImage icon = MessageBoxImage.Information;
                     MessageBox.Show(message, caption, button, icon);
                 }
-                else
+                else//if already cancelled this will pop up
                 {
                     string message = "Appointment already cancelled!";
                     string caption = "Information";
@@ -197,7 +197,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                     MessageBox.Show(message, caption, button, icon);
                 }
             }
-            else 
+            else //this will pop up if there is no appointment
             {
                 string message = "No appointment!";
                 string caption = "Information";
@@ -210,7 +210,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
         }
 
 
-        public static void RemoveAppointment(Appointment appointment, Doctor doctor)
+        public static void RemoveAppointment(Appointment appointment, Doctor doctor)//Removes a scheduled appointment from a doctor
         {
             if(appointment.Patient != null)
             {
@@ -223,7 +223,7 @@ namespace Hospital_Appointment_Scheduling_System.Models
                 MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBox.Show(message, caption, button, icon);
             }
-            else
+            else//if the appointment is booked by a patient the doctor wont be able to delete the appointment
             {
                 string message = "Cant remove appointment, appointment is currently booked";
                 string caption = "Information";

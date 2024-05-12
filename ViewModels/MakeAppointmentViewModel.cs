@@ -42,7 +42,7 @@ namespace Hospital_Appointment_Scheduling_System.ViewModels
 
         private void AddAppointment(object obj)
         {
-            AppointmentManagement.AddUnassignedAppointment(LoggedInDoctor, SelectedAppointment);
+            AppointmentManagement.AddUnassignedAppointment(LoggedInDoctor, SelectedAppointment);//adds an scheduled appointment slot for the doctor
 
         }
     }
